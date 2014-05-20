@@ -1,81 +1,252 @@
 <!DOCTYPE html>
 <html>
-<head>{include="includes"}</head>
-<body>
+<head>{include="includes"}
+</head>
+<body class="{$class} {$search_type}">
+    <div id="ajaxload"></div>
 <div id="pageheader">
-	{include="page.header"}
-	<div id="headerform" style="width:100%; white-space:nowrap;">
-	    <form method="GET" class="searchform" name="searchform" style="display:inline;"><input type="text" id="searchform_value" name="searchterm" style="width:30%" value=""> <input type="submit" value="Search" class="bigbutton"></form>
-	    <form method="GET" class="tagfilter" name="tagfilter" style="display:inline;margin-left:24px;"><input type="text" name="searchtags" id="tagfilter_value" style="width:10%" value=""> <input type="submit" value="Filter by tag" class="bigbutton"></form>
-	</div>
-</div>
-
-<div id="linklist">
-
-    {include="linklist.paging"}
-
+    {include="page.header"}
+    <div id="headerform">
+        <form method="GET" class="searchform" name="searchform">
+          <input type="text" id="searchform_value" name="searchterm" value=""> 
+          <input type="submit" value="{"Search"|e}" class="bigbutton">
+        </form>
+        <form method="GET" class="tagfilter" name="tagfilter">
+          <input type="text" name="searchtags" id="tagfilter_value" value=""> 
+          <input type="submit" value="{"Filter by tag"|e}" class="bigbutton">
+        </form>
+    </div>
+    <div style="clear:both"></div>
+    <h1 class="mynotebook_only">{"My notebook"|e}</h1>
     {if="count($links)==0"}
-        <div id="searchcriteria">Nothing found.</i></div>
+        <h1 id="searchcriteria">{"Nothing found"|e}.</i></h1>
     {else}
         {if="$search_type=='fulltext'"}
-            <div id="searchcriteria">{$result_count} results for <i>{$search_crits}</i></div>
+            <h1 id="searchcriteria">{$result_count} {"results for"|e} <i>{$search_crits}</i></h1>
         {/if}
         {if="$search_type=='tags'"}
-            <div id="searchcriteria">{$result_count} results for tags <i>
+            <h1 id="searchcriteria">{$result_count} {"results for tags"|e} <i>
             {loop="search_crits"}
                 <span class="linktag" title="Remove tag"><a href="?removetag={$value|htmlspecialchars}">{$value|htmlspecialchars} <span style="border-left:1px solid #aaa; padding-left:5px; color:#6767A7;">x</span></a></span>
-            {/loop}</i></div>
+            {/loop}</i></h1>
         {/if}
     {/if}
-    <ul>
-        {loop="links"}
-        <li{if="$value.class"} class="{$value.class}"{/if}>
-            <a name="{$value.linkdate|smallHash}" id="{$value.linkdate|smallHash}"></a>
-            <div class="thumbnail">{$value.url|thumbnail}</div>
-            <div class="linkcontainer">
-                {if="isLoggedIn()"}
-                    <div class="linkeditbuttons">
-                        <form method="GET" class="buttoneditform"><input type="hidden" name="edit_link" value="{$value.linkdate}"><input type="image" alt="Edit" src="images/edit_icon.png#" title="Edit" class="button_edit"></form><br>
-                        <form method="POST" class="buttoneditform"><input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
-                        <input type="hidden" name="token" value="{$token}"><input type="hidden" name="delete_link"><input type="image" alt="Delete" src="images/delete_icon.png#" title="Delete" class="button_delete" onClick="return confirmDeleteLink();"></form>
-                    </div>
-                {/if}
-                <span class="linktitle"><a href="{$redirector}{$value.url|htmlspecialchars}">{$value.title|htmlspecialchars}</a></span>
-                <br>
-                {if="$value.description"}<div class="linkdescription"{if condition="$search_type=='permalink'"} style="max-height:none !important;"{/if}>{$value.description}</div>{/if}
-                {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
-                    <span class="linkdate" title="Permalink"><a href="?{$value.linkdate|smallHash}">{$value.localdate|htmlspecialchars} - permalink</a> - </span>
-                {else}
-                    <span class="linkdate" title="Short link here"><a href="?{$value.linkdate|smallHash}">permalink</a> - </span>
-                {/if}
-                <div style="position:relative;display:inline;"><a href="http://invx.com/code/qrcode/?code={$scripturl|urlencode}%3F{$value.linkdate|smallHash}&width=200&height=200" 
-                    {if="empty($GLOBALS['disablejquery'])"}onclick="return false;"{/if} class="qrcode"><img src="images/qrcode.png#" width="13" height="13" title="QR-Code"></a></div> - 
-                <span class="linkurl" title="Short link">{$value.url|htmlspecialchars}</span><br>
-                {if="$value.tags"}
-                    <div class="linktaglist">
-                    {loop="value.taglist"}<span class="linktag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value|htmlspecialchars}</a></span> {/loop}
-                    </div>
-                {/if}
-            </div>
-        </li>
-    {/loop}
-    </ul>
 
-    {include="linklist.paging"}
+    <div class="shaareyourlinks nomobile"><br> {"Shaare your links"|e}... {if="!empty($linkcount)"}{$linkcount}  {"links"|e}{/if}</div>
 
 </div>
+    
+<div id="linklist">
 
-    {include="page.footer"}
-{if="empty($GLOBALS['disablejquery'])"}    
+  <div class="columns"><ol>
+  {loop="links"}
+          <li class="pin {if="$value.class"} {$value.class}{/if}">
+              <div class="thumbnail">
+                  {$value.url|thumbnail}
+              </div>
+              <div class="linkcontainer">
+                  <h1 class="linktitle">
+                      <a href="{$redirector}{if="stripos($value.tags,'mynotebook')!==false"}?{$value.linkdate|smallHash}{else}{$value.url|htmlspecialchars}{/if}">
+                          {if="$search_crits&&$search_type=='fulltext'"}
+                              {$value.title|highLightSearchTerms:$search_crits}
+                          {else}
+                              {$value.title|htmlspecialchars}
+                          {/if}
+
+                      </a>
+
+                  </h1>
+                  <p class="linkurl" title="Short link">{if="!stripos($value.tags,'mynotebook')!==false"}{$value.url|htmlspecialchars}{/if}</p>
+                  {if="isLoggedIn()"}
+                      
+                      <form method="GET" class="buttoneditform">
+                          <img src="../images/private.png"/>
+                          <input type="hidden" name="{if="stripos('mynotebook',$value.tags)!==false"}edit_note{else}edit_link{/if}" value="{$value.linkdate}"><input type="image" alt="Edit" src="images/edit_icon.png#" title="Edit" class="button_edit">
+                      </form>
+                      <form method="POST" class="buttoneditform">
+                          <input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
+                          <input type="hidden" name="token" value="{$token}">
+                          <input type="hidden" name="delete_link">
+                          <input type="image" alt="Delete" src="images/delete_icon.png#" title="Delete" class="button_delete" onClick="return confirmDeleteLink();">
+                      </form>
+                  {/if}
+                  
+                  {if="$value.description"}
+                      <div class="linkdescription">
+                          {if="$search_crits&&$search_type=='fulltext'"}
+                              {$value.description|highLightSearchTerms:$search_crits}
+                          {else}
+                              {$value.description|parse}
+                          {/if}
+                      </div>
+                  {/if}
+                  
+                  <div class="linkfooter">
+                      <a href="http://invx.com/code/qrcode/?code={$scripturl|urlencode}%3F{$value.linkdate|smallHash}&width=200&height=200" onclick="showQrCode(this); return false;" data-permalink="{$scripturl}?{$value.linkdate|smallHash}" class="qrcode"><img src="images/qrcode.png#" width="13" height="13" title="QR-Code"></a> 
+                      {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
+                          <span class="linkdate" title="Permalink"><a href="?{$value.linkdate|smallHash}">{$value.localdate|htmlspecialchars} - permalink</a> - </span>
+                      {else}
+                          <span class="linkdate" title="Short link here"><a href="?{$value.linkdate|smallHash}">permalink</a> - </span>
+                      {/if}
+                       
+                      
+                      {if="$value.tags"}
+                          <div class="linktaglist">
+                          {loop="value.taglist"}<span class="linktag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value|htmlspecialchars}</a></span> {/loop}
+                          </div>
+                      {/if}
+                  </div>
+              </div>
+          </li>
+      {/loop}
+      </ol>
+  </div>
+  {include="linklist.paging"}
+
+</div>
+    <input type="hidden" id="loaded_pages" val=""/>
+    {include="page.footer"} 
+
+<!-- Bronco pinterest style add -->
+{if="empty($GLOBALS['disablejquery'])"}
+<script src="inc/jquery.min.js#"></script><script src="inc/jquery-ui.min.js#"></script>
+<script src="inc/jquery.imagesloaded.js#"></script>
 <script>
-$(document).ready(function() {
-	$('a.qrcode').click(function(){
-	  hide_qrcode();
-	  var link = $(this).attr('href');
-	  $(this).after('<div class="qrcode" onclick="hide_qrcode();return false;"><img src="'+link+'#" width="200" height="200"><br>click to close</div>');
-	});
-});
-function hide_qrcode() { $('div.qrcode').remove(); }
+    // Remove any displayed QR-Code
+    function remove_qrcode()
+    { 
+        var elem = document.getElementById("permalinkQrcode");
+        if (elem) elem.parentNode.removeChild(elem);
+        return false;
+    }
+
+    // Show the QR-Code of a permalink (when the QR-Code icon is clicked).
+    function showQrCode(caller,loading)
+    { 
+        // Dynamic javascript lib loading: We only load qr.js if the QR code icon is clicked:
+        if (typeof(qr)=='undefined') // Load qr.js only if not present.
+        {
+            if (!loading)  // If javascript lib is still loading, do not append script to body.
+            {
+                var element = document.createElement("script");
+                element.src = "inc/qr.min.js";
+                document.body.appendChild(element);
+            }
+            setTimeout(function() { showQrCode(caller,true);}, 200); // Retry in 200 milliseconds.
+            return false;
+        }
+
+        // Remove previous qrcode if present.
+        remove_qrcode();
+        
+        // Build the div which contains the QR-Code:
+        var element = document.createElement('div');
+        element.id="permalinkQrcode";
+      // Make QR-Code div commit sepuku when clicked:
+        if ( element.attachEvent ){ element.attachEvent('onclick', 'this.parentNode.removeChild(this);' ); } // Damn IE
+        else { element.setAttribute('onclick', 'this.parentNode.removeChild(this);' ); }
+        
+        // Build the QR-Code:
+        var image = qr.image({size: 8,value: caller.dataset.permalink});
+        if (image)
+        { 
+            element.appendChild(image);
+            element.innerHTML+= "<br>{"Click to close"|e}";
+            caller.parentNode.appendChild(element);
+        }
+        else
+        {
+            element.innerHTML="Your browser does not seem to be HTML5 compatible.";
+        }
+        return false;
+    }
+
+
+    (function ($){
+
+     /* if ("{$search_type}"!='permalink'){ // dont't use infinite scroll with a unique permalink display
+        $('#linklist li.pin').wookmark();
+
+        // Init
+        var 
+          loadedImages = 0, // Counter for loaded images
+          $tiles = $('#linklist'),
+          handler = $('li.pin', $tiles),
+          $window = $(window),
+          $document = $(document);
+
+        // Prepare layout options.
+        var options = {
+          itemWidth: 300, // Optional min width of a grid item
+          autoResize: true, // This will auto-update the layout when the browser window is resized.
+          container: $tiles, // Optional, used for some extra CSS styling
+          offset: 10, // Optional, the distance between grid items
+          outerOffset: 20, // Optional the distance from grid to parent
+          flexibleWidth: '50%', // Optional, the maximum width of a grid item
+          //fillEmptySpace: false
+        };
+
+        
+        // Reinitializes the wookmark handler after all images have loaded
+        function applyLayout() {
+          // Destroy the old handler
+          if (handler.wookmarkInstance) {
+            handler.wookmarkInstance.clear();
+            }
+
+          // Create a new layout handler.
+          handler = $('li.pin', $tiles);
+          handler.wookmark(options);
+        }
+
+      // apply layout on resize
+      $window.resize(function() {
+        var windowWidth = $window.width(),
+            newOptions = { flexibleWidth: '50%' };
+
+        // Breakpoint
+        if (windowWidth < 1024) {
+          newOptions.flexibleWidth = '100%';
+        }
+
+        handler.wookmark(newOptions);
+      });
+
+      // Capture scroll event.
+      $window.bind('scroll.wookmark', function(){
+        
+
+        
+          // Check if we're within 300 pixels of the bottom edge of the broser window.
+          var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
+              closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 300),
+              $tiles = $('#linklist');
+
+          if (closeToBottom) {           
+            ajaxload=$('#ajaxload');
+            nextpage=$(".nextpage").last().val();
+            loaded=$('#loaded_pages');
+            is_loaded=loaded.val().indexOf(nextpage);
+            //console.log(nextpage+' / '+loaded+' => '+is_loaded);
+            
+            if (nextpage && is_loaded==-1){
+              loaded.val(loaded.val()+' '+nextpage); // avoid pages to load twice
+              ajaxload.load(nextpage, function() {
+                $tiles.html($tiles.html()+ajaxload.html());
+                ajaxload.html('');                
+              }); 
+              
+              applyLayout();
+            }
+          }
+          applyLayout();
+        
+      });
+      
+      applyLayout();
+    }*/
+
+    })(jQuery);
 </script>
 {/if}
 </body>

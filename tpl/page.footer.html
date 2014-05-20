@@ -1,30 +1,49 @@
 <div id="footer">
-    <b><a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli">Shaarli {$version|htmlspecialchars}</a></b> - The personal, minimalist, super-fast, no-database delicious clone. By <a href="http://sebsauvage.net" target="_blank">sebsauvage.net</a>. Theme by <a href="http://blog.idleman.fr" target="_blank">idleman.fr</a>.
+
+    <strong><a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli">Shaarli {$version|htmlspecialchars}</a></strong> - {"The personal, minimalist, super-fast, no-database delicious clone. By"|e} <a href="http://sebsauvage.net" target="_blank">sebsauvage.net</a>. {"Shinterest Theme by"|e} <a href="http://warriordudimanche.net" target="_blank">Bronco</a>.
 </div>
 {if="$newversion"}
-    <div id="newversion"><span style="text-decoration:blink;">&#x25CF;</span> Shaarli {$newversion|htmlspecialchars} is <a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli#download">available</a>.</div>
+    <div id="newversion"><span >&#x25CF;</span> Shaarli {$newversion|htmlspecialchars} {"is"|e} <a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli#download">{"available"|e}</a>.</div>
 {/if}
+
+
+
+<div id="fade" class="LB-black-overlay" onclick="if (!is_modal) HideLightBox(); return false;"></div>
+<div id="dialog-box" class="LB-white-content">
+    <a id="dialog-close" href="" onclick="HideLightBox(); return false;">{"Close"|e}</a>
+    <h1 id="dialog-title"></h1>
+    <div id="dialog-content"></div>
+</div> 
+
+
+
+
 {if="isLoggedIn()"}
-<script language="JavaScript">function confirmDeleteLink() { var agree=confirm("Are you sure you want to delete this link ?"); if (agree) return true ; else return false ; }</script>
-{/if}
-
-{if="($GLOBALS['config']['OPEN_SHAARLI'] || isLoggedIn()) && empty($GLOBALS['disablejquery'])"}
 <script language="JavaScript">
-$(document).ready(function()
-{
-    $('#lf_tags').autocomplete({source:'{$source}?ws=tags',minLength:1});
-    $('#searchtags').autocomplete({source:'{$source}?ws=tags',minLength:1});
-    $('#fromtag').autocomplete({source:'{$source}?ws=singletag',minLength:1});
-});
-</script>
-{/if}
 
-{if="empty($GLOBALS['disablejquery']) && isset($_GET['searchterm'])"}
-<script src="inc/jquery.highlight.js#"></script>
-<script language="JavaScript">
-$(document).ready(function()
-{
-	$('#linklist li').highlight("{$search_crits}");
-});
-</script>
+	function confirmDeleteLink() {noparse}{{/noparse} var agree=confirm("{"Are you sure you want to delete this link"|e} ?"); if (agree) return true ; else return false ; }
+
+	var curr_lb_div;
+	var is_modal = false;
+	function ShowLightBox(title,content )
+	{
+		lb_div="dialog-box";isModal=true;
+	    document.getElementById('dialog-content').innerHTML=content;
+	    document.getElementById('dialog-title').innerHTML=title;
+	   	document.getElementById(lb_div).style.display='block';
+	    document.getElementById(lb_div).style.top=document.getElementsByTagName('body')[0].scrollTop;
+	    document.getElementById('fade').style.display='block';
+	    curr_lb_div = lb_div;
+
+	}
+	function HideLightBox()
+	{
+	    if (document.getElementById(curr_lb_div))
+	    {
+	         document.getElementById(curr_lb_div).style.display='none';
+	         document.getElementById('fade').style.display='none';
+	         curr_lb_div = '';
+	    }
+	}
+</script> 
 {/if}

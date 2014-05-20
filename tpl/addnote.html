@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>{include="includes"}
+{if="empty($GLOBALS['disablejquery'])"}<script src="inc/jquery.min.js#"></script><script src="inc/jquery-ui.min.js#"></script>{/if}
+</head>
+<body class="addnote mynotebook" 
+{if condition="$link.title==''"}onload="document.linkform.lf_title.focus();"
+{elseif condition="$link.description==''"}onload="document.linkform.lf_description.focus();"
+{else}onload="document.linkform.lf_tags.focus();"{/if} >
+<div id="pageheader">
+	{include="page.header"}	
+	<div id="editlinkform"><h1>{"New note"|e}</h1>
+	    <form method="post" name="linkform" action="index.php">
+	        <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
+	        <em>{"Picture's url to illustrate the note"|e}</em><br><input type="text" name="lf_url" value="{$link.url|htmlspecialchars}"><br><br>
+	        <em>{"Title"|e}</em><br><input type="text" name="lf_title" value="{$link.title|htmlspecialchars}"><br>
+	        <em>{"Note's content"|e}</em><br><textarea name="lf_description" rows="25" cols="25">{$link.description|htmlspecialchars}</textarea><br>
+	        <em>Tags</em><br><input type="text" id="lf_tags" name="lf_tags" value="{if condition="$link_is_new"}mynotebook{/if} {$link.tags|htmlspecialchars}">
+	        <br>
+	        <input type="checkbox" checked="checked" name="lf_private" id="lf_private">
+            &nbsp;<label for="lf_private"><em>{"Private"|e}</em></label><br>
+            
+	        <input type="submit" value="{"Save"|e}" name="save_edit" class="bigbutton">
+	        <input type="submit" value="{"Cancel"|e}" name="cancel_edit" class="bigbutton">
+	        {if condition="!$link_is_new"}<input type="submit" value="{"Delete"|e}" name="delete_link" class="bigbutton"  onClick="return confirmDeleteLink();">{/if}
+	        <input type="hidden" name="token" value="{$token}">
+	        {if condition="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">{/if}
+	    </form>
+	</div>
+</div>
+{include="page.footer"}
+{if="($GLOBALS['config']['OPEN_SHAARLI'] || isLoggedIn()) && empty($GLOBALS['disablejquery'])"}
+<script language="JavaScript">
+$(document).ready(function()
+{
+    $('#lf_tags').autocomplete({source:'{$source}?ws=tags',minLength:1});
+});
+</script>
+{/if}
+</body>
+</html>

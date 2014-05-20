@@ -1,26 +1,41 @@
 
-    <div id="logo" title="Share your links !" onclick="document.location='?';"></div>
-    <div style="float:right; font-style:italic; color:#bbb; text-align:right; padding:0 5 0 0;" class="nomobile">Shaare your links...<br>
-        {if="!empty($linkcount)"}{$linkcount} links{/if}</div>
-    <span id="shaarli_title"><a href="?">{$shaarlititle|htmlspecialchars}</a></span>
-  
+<div id="logo" title="Shinterest {"home"|e}" onclick="document.location='?';"><h1 id="shaarli_title"><a href="?">{$pagetitle|htmlspecialchars}</a></h1></div>
+
+
+  <nav> 
 {if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}
-    {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
+{ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
 {else}
-    <a href="?" class="nomobile">Home</a>
-    {if="isLoggedIn()"}
-        <a href="?do=logout">Logout</a><a href="?do=tools">Tools</a><a href="?do=addlink"><b>Add link</b></a>
-    {elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
-        <a href="?do=tools">Tools</a><a href="?do=addlink"><b>Add link</b></a>
-    {else}
-        <a href="?do=login">Login</a>
-    {/if}
-    <a href="{$feedurl}?do=rss{$searchcrits}" class="nomobile">RSS Feed</a>
-    <a href="{$feedurl}?do=atom{$searchcrits}" style="padding-left:10px;" class="nomobile">ATOM Feed</a>
-    <a href="?do=tagcloud">Tag cloud</a>
-    <a href="?do=picwall{$searchcrits}">Picture wall</a>
-    <a href="?do=daily">Daily</a>
+<a href="?" class="nomobile">{"Home"|e}</a>
+{if="isLoggedIn()"}
+<a href="?do=logout">{"Logout"|e}</a><a href="?do=tools">{"Tools"|e}</a>
+<a class="addlink_link" href="?do=addlink"><strong>{"Add link"|e}</strong></a>
+<a class="addnote_link" href="index.php?post=%20+&amp;addnote=true"  >{"New note"|e} </a>
+{elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
+<a href="?do=tools">{"Tools"|e}</a><a href="?do=addlink"><strong>{"Add link"|e}</strong></a>
+{else}
+<a href="?do=login">{"Login"|e}</a>
 {/if}
-    <div class="clear"></div>
+<a class="rssfeed_link" href="{$feedurl}?do=rss{$searchcrits}" class="nomobile">{"RSS Feed"|e}</a>
+<a class="atomfeed_link" href="{$feedurl}?do=atom{$searchcrits}" class="nomobile">{"ATOM Feed"|e}</a>
+<a class="tagcloud_link" href="?do=tagcloud">{"Tag cloud"|e}</a>
+<a class="picwall_link" href="?do=picwall{$searchcrits}">{"Picture wall"|e}</a>
+<a class="daily_link" href="?do=daily">{"Daily"|e}</a>
+<a class="notebook_link" href="?searchtags=mynotebook">{"Notebook"|e}</a>
+<a class="about_link" title="{"About"|e}" onclick="ShowLightBox('About Shinterest','<li>Shaarli is an app from Sebsauvage</li><ul>Shinterest is a Shaarli fork with some changes:<li>Pinterest like</li><li>make & manage notes, todolist with the notebook system</li><li>use markdown in descriptions</li><li>use infinite scroll instead of pagination</li><li>delete tags form the tag cloud (admin)</li><li>translate shinterest adding your own transaltions in languages.php  (french/english for now)</li><li>add an image as a link illustration</li></ul><p>This version of Shaarli is clearly not for old computers an browsers.</p>'); return false;">{"?"|e}</a>
+
+
+
+
+
+
+
+
+
+{/if}
+
+
+ </nav>
+<div class="clear"></div>
 
 
