@@ -1,3 +1,4 @@
+![Shinterest logo](http://www.warriordudimanche.net/data/images/shinterest.png)
 Bronco's Pinterest version
 
 New in this version:
