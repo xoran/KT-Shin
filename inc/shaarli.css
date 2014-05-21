@@ -24,7 +24,10 @@ version: 2.8.2r1
 }
 
 *, *:before, *:after {   -webkit-box-sizing: border-box;    -moz-box-sizing: border-box;    box-sizing: border-box; }
-*,*:hover{transition: all 300ms;}
+
+
+input,input:hover,label,label:hover,a,a:hover{transition: all 300ms;}
+
 *{outline:none!important;}
 html{color:#000;background:url(../images/scribble_light.png) #ffffff;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{*font-size:100%;}
 #ajaxload{display:none;height:0;}
@@ -268,7 +271,7 @@ hr{
 	background: linear-gradient(#FaFaFa, #ffffff);
 }
 #linklist li.private { box-shadow: 0 1px 2px rgba(255,0,0,0.3);}
-#linklist:hover li.pin  {  padding:0; opacity:0.4;}
+/*#linklist:hover li.pin  {  padding:0; opacity:0.4;}*/
 #linklist li.pin:hover {  padding:0; opacity:1;}
 #linklist li.pin a:hover {  color:#24ab00!important;}
 
@@ -346,6 +349,11 @@ hr{
 body.permalink{}
 body.permalink #linklist:hover .pin{opacity:1;}
 body.permalink #linklist{padding-bottom:20px;}
+body.permalink #linklist .columns{
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		column-count: 1;
+	}
 body.permalink #linklist .pin{
 	position:relative!important;
 	width:1000px;
