@@ -42,7 +42,11 @@
   {loop="links"}
           <li class="pin {if="$value.class"} {$value.class}{/if}">
               <div class="thumbnail">
-                  {$value.url|thumbnail}
+                  {if="isset($value.urlimg)&&trim($value.urlimg)!=''"}
+                    {$value.urlimg|thumbnail}
+                  {else}
+                    {$value.url|thumbnail}
+                  {/if}
               </div>
               <div class="linkcontainer">
                   <h1 class="linktitle">
@@ -61,7 +65,7 @@
                       
                       <form method="GET" class="buttoneditform">
                           <img src="../images/private.png"/>
-                          <input type="hidden" name="{if="stripos('mynotebook',$value.tags)!==false"}edit_note{else}edit_link{/if}" value="{$value.linkdate}"><input type="image" alt="Edit" src="images/edit_icon.png#" title="Edit" class="button_edit">
+                          <input type="hidden" name="{if="stripos($value.tags,'mynotebook')!==false"}edit_note{else}edit_link{/if}" value="{$value.linkdate}"><input type="image" alt="Edit" src="images/edit_icon.png#" title="Edit" class="button_edit">
                       </form>
                       <form method="POST" class="buttoneditform">
                           <input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
@@ -161,92 +165,6 @@
         return false;
     }
 
-
-    (function ($){
-
-     /* if ("{$search_type}"!='permalink'){ // dont't use infinite scroll with a unique permalink display
-        $('#linklist li.pin').wookmark();
-
-        // Init
-        var 
-          loadedImages = 0, // Counter for loaded images
-          $tiles = $('#linklist'),
-          handler = $('li.pin', $tiles),
-          $window = $(window),
-          $document = $(document);
-
-        // Prepare layout options.
-        var options = {
-          itemWidth: 300, // Optional min width of a grid item
-          autoResize: true, // This will auto-update the layout when the browser window is resized.
-          container: $tiles, // Optional, used for some extra CSS styling
-          offset: 10, // Optional, the distance between grid items
-          outerOffset: 20, // Optional the distance from grid to parent
-          flexibleWidth: '50%', // Optional, the maximum width of a grid item
-          //fillEmptySpace: false
-        };
-
-        
-        // Reinitializes the wookmark handler after all images have loaded
-        function applyLayout() {
-          // Destroy the old handler
-          if (handler.wookmarkInstance) {
-            handler.wookmarkInstance.clear();
-            }
-
-          // Create a new layout handler.
-          handler = $('li.pin', $tiles);
-          handler.wookmark(options);
-        }
-
-      // apply layout on resize
-      $window.resize(function() {
-        var windowWidth = $window.width(),
-            newOptions = { flexibleWidth: '50%' };
-
-        // Breakpoint
-        if (windowWidth < 1024) {
-          newOptions.flexibleWidth = '100%';
-        }
-
-        handler.wookmark(newOptions);
-      });
-
-      // Capture scroll event.
-      $window.bind('scroll.wookmark', function(){
-        
-
-        
-          // Check if we're within 300 pixels of the bottom edge of the broser window.
-          var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
-              closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 300),
-              $tiles = $('#linklist');
-
-          if (closeToBottom) {           
-            ajaxload=$('#ajaxload');
-            nextpage=$(".nextpage").last().val();
-            loaded=$('#loaded_pages');
-            is_loaded=loaded.val().indexOf(nextpage);
-            //console.log(nextpage+' / '+loaded+' => '+is_loaded);
-            
-            if (nextpage && is_loaded==-1){
-              loaded.val(loaded.val()+' '+nextpage); // avoid pages to load twice
-              ajaxload.load(nextpage, function() {
-                $tiles.html($tiles.html()+ajaxload.html());
-                ajaxload.html('');                
-              }); 
-              
-              applyLayout();
-            }
-          }
-          applyLayout();
-        
-      });
-      
-      applyLayout();
-    }*/
-
-    })(jQuery);
 </script>
 {/if}
 </body>
