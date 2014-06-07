@@ -10,7 +10,7 @@
 <div id="pageheader">
 	{include="page.header"}
 	<div id="editlinkform">
-	    <form method="post" name="linkform" action="index.php?{$bkm_source}">
+	    <form method="post" name="linkform" action="index.php?{if="isset($bkm_source)"}{$bkm_source}{/if}">
 	        <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
 	        <em>URL</em><br><input type="text" name="lf_url" value="{$link.url|htmlspecialchars}" style="width:100%"><br>
 	        <em>{"Picture's url to illustrate the link"|e}</em><br><input type="text" name="lf_imgurl" value="" style="width:100%"><br>
