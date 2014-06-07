@@ -264,7 +264,7 @@ hr{
 	-webkit-column-break-inside: avoid-column;
 	-moz-column-break-inside: avoid-column;
 	column-break-inside: avoid-column;
-	min-width:300px;width: 100%;
+	min-width:250px;width: 100%;
 	/*max-width:450px;*/
 	padding:0;
 	border-top: 1px solid #eee;
@@ -272,6 +272,8 @@ hr{
     list-style:numeric;
 	background: linear-gradient(#FaFaFa, #ffffff);
 
+
+	
 }
 #linklist li.private { box-shadow: 0 1px 2px rgba(255,0,0,0.3);}
 /*#linklist:hover li.pin  {  padding:0; opacity:0.4;}*/
@@ -304,11 +306,11 @@ hr{
 .linkdescription ul,.linkdescription ol {border:none;margin-top:5px;margin-bottom:5px;}
 .linkdescription p {padding:5px 0;}
 .linkdescription em {font-style:italic;}
-.linkdescription strong {font-weight: bold}
 .linkdescription h1 {font-size: 1.4em;font-weight: bold;}
 .linkdescription h2 {font-size: 1.3em;font-weight: bold;}
 .linkdescription h3 {font-size: 1.2em;font-weight: bold;}
 .linkdescription h4 {font-size: 1.1em;font-weight: bold;}
+.linkdescription strong {font-weight: bold}
 .linkdescription a:hover { color:#F57900; }
 .linkfooter{
 	
@@ -361,10 +363,11 @@ body.permalink #linklist .columns{
 		-moz-column-count: 1;
 		column-count: 1;
 	}
+body.permalink #linklist .columns>ol{display:block;width:1000px;margin:0 auto!important;}
 body.permalink #linklist .pin{
 	position:relative!important;
 	width:1000px;
-	margin:0 auto!important;
+	
 }
 body.permalink #linklist .pin .thumbnail {background-color:#eee; text-align:left;}
 body.permalink #linklist .pin .thumbnail img{width:auto!important;margin:10px;}
@@ -732,7 +735,7 @@ a#dialog-close {
 		column-count: 4;
 	}
 }
-@media (min-width: 1300px) {
+@media (min-width: 1600px) {
 	#linklist .columns {
 		-webkit-column-count: 5;
 		-moz-column-count: 5;
