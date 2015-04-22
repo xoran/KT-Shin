@@ -1,4 +1,6 @@
 # KT-Shin
+Milestones:
+- The first step is going to be changing the basic theme : actually in progress
 
 KT-Shin is a project forked from [Shinterest](https://github.com/broncowdd/Shinterest)
 
