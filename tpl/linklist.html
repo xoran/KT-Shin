@@ -8,11 +8,11 @@
     {include="page.header"}
     <div id="headerform">
         <form method="GET" class="searchform" name="searchform">
-          <input type="text" id="searchform_value" name="searchterm" value=""> 
+          <input type="text" id="searchform_value" name="searchterm" value="">
           <input type="submit" value="{"Search"|e}" class="bigbutton">
         </form>
         <form method="GET" class="tagfilter" name="tagfilter">
-          <input type="text" name="searchtags" id="tagfilter_value" value=""> 
+          <input type="text" name="searchtags" id="tagfilter_value" value="">
           <input type="submit" value="{"Filter by tag"|e}" class="bigbutton">
         </form>
     </div>
@@ -35,7 +35,7 @@
     <div class="shaareyourlinks nomobile"><br> {"Shaare your links"|e}... {if="!empty($linkcount)"}{$linkcount}  {"links"|e}{/if}</div>
 
 </div>
-    
+
 <div id="linklist">
 
   <div class="columns"><ol>
@@ -62,7 +62,7 @@
                   </h1>
                   <p class="linkurl" title="Short link">{if="!stripos($value.tags,'mynotebook')!==false"}{$value.url|htmlspecialchars}{/if}</p>
                   {if="isLoggedIn()"}
-                      
+
                       <form method="GET" class="buttoneditform">
                           <img src="../images/private.png"/>
                           <input type="hidden" name="{if="stripos($value.tags,'mynotebook')!==false"}edit_note{else}edit_link{/if}" value="{$value.linkdate}"><input type="image" alt="Edit" src="images/edit_icon.png#" title="Edit" class="button_edit">
@@ -74,7 +74,7 @@
                           <input type="image" alt="Delete" src="images/delete_icon.png#" title="Delete" class="button_delete" onClick="return confirmDeleteLink();">
                       </form>
                   {/if}
-                  
+
                   {if="$value.description"}
                       <div class="linkdescription">
                           {if="$search_crits&&$search_type=='fulltext'"}
@@ -84,16 +84,16 @@
                           {/if}
                       </div>
                   {/if}
-                  
+
                   <div class="linkfooter">
-                      <a href="http://invx.com/code/qrcode/?code={$scripturl|urlencode}%3F{$value.linkdate|smallHash}&width=200&height=200" onclick="showQrCode(this); return false;" data-permalink="{$scripturl}?{$value.linkdate|smallHash}" class="qrcode"><img src="images/qrcode.png#" width="13" height="13" title="QR-Code"></a> 
+                      <a href="http://invx.com/code/qrcode/?code={$scripturl|urlencode}%3F{$value.linkdate|smallHash}&width=200&height=200" onclick="showQrCode(this); return false;" data-permalink="{$scripturl}?{$value.linkdate|smallHash}" class="qrcode"><img src="images/qrcode.png#" width="13" height="13" title="QR-Code"></a>
                       {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
                           <span class="linkdate" title="Permalink"><a href="?{$value.linkdate|smallHash}">{$value.localdate|htmlspecialchars} - permalink</a> - </span>
                       {else}
                           <span class="linkdate" title="Short link here"><a href="?{$value.linkdate|smallHash}">permalink</a> - </span>
                       {/if}
-                       
-                      
+
+
                       {if="$value.tags"}
                           <div class="linktaglist">
                           {loop="value.taglist"}<span class="linktag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value|htmlspecialchars}</a></span> {/loop}
@@ -109,16 +109,16 @@
 
 </div>
     <input type="hidden" id="loaded_pages" val=""/>
-    {include="page.footer"} 
+    {include="page.footer"}
 
 <!-- Bronco pinterest style add -->
 {if="empty($GLOBALS['disablejquery'])"}
-<script src="inc/jquery.min.js#"></script><script src="inc/jquery-ui.min.js#"></script>
-<script src="inc/jquery.imagesloaded.js#"></script>
+<script src="assets/jquery/jquery.min.js#"></script><script src="inc/jquery-ui.min.js#"></script>
+<script src="assets/jquery/jquery.imagesloaded.js#"></script>
 <script>
     // Remove any displayed QR-Code
     function remove_qrcode()
-    { 
+    {
         var elem = document.getElementById("permalinkQrcode");
         if (elem) elem.parentNode.removeChild(elem);
         return false;
@@ -126,7 +126,7 @@
 
     // Show the QR-Code of a permalink (when the QR-Code icon is clicked).
     function showQrCode(caller,loading)
-    { 
+    {
         // Dynamic javascript lib loading: We only load qr.js if the QR code icon is clicked:
         if (typeof(qr)=='undefined') // Load qr.js only if not present.
         {
@@ -142,18 +142,18 @@
 
         // Remove previous qrcode if present.
         remove_qrcode();
-        
+
         // Build the div which contains the QR-Code:
         var element = document.createElement('div');
         element.id="permalinkQrcode";
       // Make QR-Code div commit sepuku when clicked:
         if ( element.attachEvent ){ element.attachEvent('onclick', 'this.parentNode.removeChild(this);' ); } // Damn IE
         else { element.setAttribute('onclick', 'this.parentNode.removeChild(this);' ); }
-        
+
         // Build the QR-Code:
         var image = qr.image({size: 8,value: caller.dataset.permalink});
         if (image)
-        { 
+        {
             element.appendChild(image);
             element.innerHTML+= "<br>{"Click to close"|e}";
             caller.parentNode.appendChild(element);

@@ -1,0 +1,13 @@
+body { margin: 0 }
+li.nostyle { list-style: none; }
+footer { color: #332CE0; margin: 30px 0; }
+.lightText { color: #ACACAC; }
+.row { margin: 0; }
+.topMargin30 { margin-top: 30px; }
+.botMargin10 { margin-bottom: 10px; }
+.dir { color: #FC2C65; font-weight: bold; }
+.redSpan { background: #FC2C65 !important; color: #FFF !important; }
+.greySpan { background: #7F7F7F !important; color: #FFF !important; }
+.header { position: fixed; background: #FFF; z-index: 1; }
+.content { margin-top: 140px }
+/*.nav-tabs { box-shadow:0px 2px 2px #DCDCDC; }*/

@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>{include="includes"}
-{if="empty($GLOBALS['disablejquery'])"}	
-<script src="inc/jquery.min.js#"></script>
-<script src="inc/jquery-ui.min.js#"></script>
-<script src="inc/jquery.lazyload.min.js#"></script>
-{/if}
+<head>
+{include="includes"}
 </head>
 <body class="picwall">
 <div id="pageheader">{include="page.header"}</div>
@@ -19,13 +15,17 @@
 </div>
 </div>
 {include="page.footer"}
-
-{if="empty($GLOBALS['disablejquery'])"} 
+{if="empty($GLOBALS['disablejquery'])"}
+<script src="assets/jquery/jquery.min.js#"></script>
+<script src="assets/jquery/jquery-ui.min.js#"></script>
+<script src="assets/jquery/jquery.lazyload.min.js#"></script>
+{/if}
+{if="empty($GLOBALS['disablejquery'])"}
 <script>
 $(document).ready(function() {
     $("img.lazyimage").show().lazyload();
 });
 </script>
-{/if} 
+{/if}
 </body>
 </html>
