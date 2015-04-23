@@ -71,6 +71,7 @@ if (isset($_POST['login']))
 
 // ------------------------------------------------------------------------------------------
 // Render HTML page (according to URL parameters and user rights)
+
 function renderPage()
 {
     $LINKSDB=new linkdb(isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']);  // Read links from database (and filter private links if used it not logged in).
