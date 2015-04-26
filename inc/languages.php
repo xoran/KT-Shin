@@ -2,7 +2,7 @@
 /* how to use it:
 add your own translations cloning the array
 add your own messages in the templates with {"english message"|e} : this will tranlate using the config language.
-to use it in a php file, you can use e('message') 
+to use it in a php file, you can use e('message')
 /*
 
 
@@ -22,21 +22,25 @@ $messages['fr']=array(
 	'rss feed'=>'Flux RSS',
 	'atom feed'=>'Flux ATOM',
 	'tools'=>'Outils',
+    'Admin'=>'Admin',
+    'Flux'=>'Flux',
 	'add link'=>'Ajouter lien',
 	'new note'=>'Ajouter note',
 	'tag cloud'=>'Nuage de tags',
-	'search'=>'Rech. ',
+    'tag'=>'étiquette',
+	'Search'=>'Trouver',
+    'search keyword'=>'Rechercher un mot clé',
 	'or'=>'ou',
-	'filter by tags'=>'Par tags',
-	'filter by tag'=>'Par tags',
+	'filter by tags'=>'Par Etiquettes',
+	'filter by tag'=>'Filtrer par étiquette',
 	'daily'=>'Quotidien',
 	'daily rss feed'=>'Flux RSS du Quotidien',
 	'the daily shaarli'=>'Le Petit Shaarli Quotidien',
 	'picture wall'=>"Mur d'images",
 	'links'=>'liens',
-	'shinterest theme by'=>'Thème Shinterest par',
+	'kt-shin theme by'=>'Thème KT-Shin par',
 	'Features'=>'Javascript',
-	'shaare your links'=>'Partagez vos liens',
+	'shaare your links'=>'J\'ai découvert et partage avec vous',
 	'the personal, minimalist, super-fast, no-database delicious clone. by'=>'Le clone personnel de Delicious, minimaliste, super rapide et sans BDD par ',
 	'original theme by'=>'Thème original par',
 	'pinterest-like theme by'=>'Thème Pinterest par',
@@ -103,8 +107,9 @@ $messages['fr']=array(
 	"wrong token."=>'Mauvais token.',
 	"not found."=>'Lien introuvable...',
 	"you would mind"=>'Veuillez ',
-	"clicking here"=>'Clicker ici.',
-	
+	"clicking here"=>'cliquez ici',
+    "keywords"=>'mots clés',
+
 	// js messages
 	'wrong login/password'=>'Mauvais login/mot de passe',
 	'are you sure you want to delete this link'=>'Voulez-vous vraiment effacer ce lien',

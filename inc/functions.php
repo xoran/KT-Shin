@@ -1,4 +1,4 @@
-<?php 
+<?php
 // All the shaarli's functions are here
 // except the core ones
 
@@ -229,7 +229,7 @@ function isLoggedIn()
 }
 
 // Force logout.
-function logout() { if (isset($_SESSION)) { unset($_SESSION['uid']); unset($_SESSION['ip']); unset($_SESSION['username']); unset($_SESSION['privateonly']); }  
+function logout() { if (isset($_SESSION)) { unset($_SESSION['uid']); unset($_SESSION['ip']); unset($_SESSION['username']); unset($_SESSION['privateonly']); }
 setcookie('shaarli_staySignedIn', FALSE, 0, WEB_PATH);
 }
 
@@ -752,7 +752,7 @@ function showRSS()
     else $linksToDisplay = $LINKSDB;
     $nblinksToDisplay = 50;  // Number of links to display.
     if (!empty($_GET['nb']))  // In URL, you can specificy the number of links. Example: nb=200 or nb=all for all links.
-    { 
+    {
         $nblinksToDisplay = $_GET['nb']=='all' ? count($linksToDisplay) : max($_GET['nb']+0,1) ;
     }
 
@@ -827,7 +827,7 @@ function showATOM()
     else $linksToDisplay = $LINKSDB;
     $nblinksToDisplay = 50;  // Number of links to display.
     if (!empty($_GET['nb']))  // In URL, you can specificy the number of links. Example: nb=200 or nb=all for all links.
-    { 
+    {
         $nblinksToDisplay = $_GET['nb']=='all' ? count($linksToDisplay) : max($_GET['nb']+0,1) ;
     }
 
@@ -1755,11 +1755,6 @@ function invalidateCaches()
 ///////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-
-
-
 function highLightSearchTerms($string,$searchterm){
     if (is_array($searchterm)){$searchterm=implode('', $searchterm); }
     $repl='<em class="highlight_term">'.$searchterm.'</em>';
@@ -1768,7 +1763,7 @@ function highLightSearchTerms($string,$searchterm){
 
     return mb_eregi_replace($rule,$replreg,parse($string));
 }
- 
+
 #
 #
 # Parsedown
@@ -2088,7 +2083,7 @@ function highLightSearchTerms($string,$searchterm){
         $elements []= $element;
         array_shift($elements);
 
-        
+
         $markup = '';
         foreach ($elements as $index => $element)
         {
@@ -2194,7 +2189,7 @@ function highLightSearchTerms($string,$searchterm){
                     $element = '<a href="'.$url.'">'.$element_text.'</a>';
                 }
 
-    
+
                 $code = "\x1A".'$'.$index;
                 $text = str_replace($matches[0], $code, $text);
                 $map[$code] = $element;
@@ -2226,7 +2221,7 @@ function highLightSearchTerms($string,$searchterm){
                         $element = '<a href="'.$url.'">'.$element_text.'</a>';
                     }
 
-                    
+
                     $code = "\x1A".'$'.$index;
                     $text = str_replace($matches[0], $code, $text);
                     $map[$code] = $element;
@@ -2246,7 +2241,7 @@ function highLightSearchTerms($string,$searchterm){
                 $element = '<a href=":href">:text</a>';
                 $element = str_replace(':text', $url, $element);
                 $element = str_replace(':href', $url, $element);
-                
+
                 $code = "\x1A".'$'.$index;
                 $text = str_replace($matches[0], $code, $text);
                 $map[$code] = $element;
@@ -2254,7 +2249,7 @@ function highLightSearchTerms($string,$searchterm){
             }
         }
 
-        
+
         strpos($text, '&') !== FALSE and $text = preg_replace('/&(?!#?\w+;)/', '&amp;', $text);
         strpos($text, '<') !== FALSE and $text = preg_replace('/<(?!\/?\w.*?>)/', '&lt;', $text);
 
@@ -2277,5 +2272,15 @@ function highLightSearchTerms($string,$searchterm){
 
 
 function aff($a,$stop=true){echo 'Arret dans le fichier '.__FILE__.'<pre>';var_dump($a);echo '</pre>';if ($stop){exit();}}
+
+function reduceTitle($string)
+{
+    $len = 50;
+    if (strlen($string) > $len)
+        return substr($string, 0, $len).'...';
+    else
+        return $string;
+
+}
 
 ?>

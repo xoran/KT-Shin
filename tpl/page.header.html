@@ -1,41 +1,55 @@
-
-<div id="logo" title="Shinterest {"home"|e}" onclick="document.location='?';"><h1 id="shaarli_title"><a href="?">{$pagetitle|htmlspecialchars}</a></h1></div>
-
-
-  <nav> 
 {if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}
 {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
 {else}
-<a href="?" class="nomobile">{"Home"|e}</a>
-{if="isLoggedIn()"}
-<a href="?do=logout">{"Logout"|e}</a><a href="?do=tools">{"Tools"|e}</a>
-<a class="addlink_link" href="?do=addlink"><strong>{"Add link"|e}</strong></a>
-<a class="addnote_link" href="index.php?post=%20+&amp;addnote=true"  >{"New note"|e} </a>
-{elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
-<a href="?do=tools">{"Tools"|e}</a><a href="?do=addlink"><strong>{"Add link"|e}</strong></a>
-{else}
-<a href="?do=login">{"Login"|e}</a>
-{/if}
-<a class="rssfeed_link" href="{$feedurl}?do=rss{$searchcrits}" class="nomobile">{"RSS Feed"|e}</a>
-<a class="atomfeed_link" href="{$feedurl}?do=atom{$searchcrits}" class="nomobile">{"ATOM Feed"|e}</a>
-<a class="tagcloud_link" href="?do=tagcloud">{"Tag cloud"|e}</a>
-<a class="picwall_link" href="?do=picwall{$searchcrits}">{"Picture wall"|e}</a>
-<a class="daily_link" href="?do=daily">{"Daily"|e}</a>
-<a class="notebook_link" href="?searchtags=mynotebook">{"Notebook"|e}</a>
-<a class="about_link" title="{"About"|e}" onclick="ShowLightBox('About Shinterest','<li>Shaarli is an app from Sebsauvage</li><ul>Shinterest is a Shaarli fork with some changes:<li>Pinterest like</li><li>make & manage notes, todolist with the notebook system</li><li>use markdown in descriptions</li><li>use infinite scroll instead of pagination</li><li>delete tags form the tag cloud (admin)</li><li>translate shinterest adding your own transaltions in languages.php  (french/english for now)</li><li>add an image as a link illustration</li></ul><p>This version of Shaarli is clearly not for old computers an browsers.</p>'); return false;">{"?"|e}</a>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="?">KT-Shin</a>
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
 
+        <li><a href="?">{"Home"|e} <span class="sr-only">(current)</span></a></li>
+        {if="isLoggedIn()"}
+		<li class="dropdown">
+		    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{"Admin"|e}<span class="caret"></span></a>
+		    <ul class="dropdown-menu" role="menu">
+		     <li><a href="?do=logout">{"Logout"|e}</a><a href="?do=tools">{"Tools"|e}</a></li>
+			 <li><a class="addlink_link" href="?do=addlink"><strong>{"Add link"|e}</strong></a></li>
+			 <li><a class="addnote_link" href="index.php?post=%20+&amp;addnote=true"  >{"New note"|e} </a></li>
+			</ul>
+		</li>
+		{elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
+			<li><a href="?do=tools">{"Tools"|e}</a><a href="?do=addlink"><strong>{"Add link"|e}</strong></a></li>
+		{else}
+			<li><a href="?do=login">{"Login"|e}</a></li>
+		{/if}
+		<li class="dropdown">
+		    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{"Flux"|e}<span class="caret"></span></a>
+		    <ul class="dropdown-menu" role="menu">
+				<li><a class="rssfeed_link" href="{$feedurl}?do=rss{$searchcrits}" class="nomobile">{"RSS Feed"|e}</a></li>
+				<li><a class="atomfeed_link" href="{$feedurl}?do=atom{$searchcrits}" class="nomobile">{"ATOM Feed"|e}</a></li>
+			</ul>
+		</li>
+			<li><a class="tagcloud_link" href="?do=tagcloud">{"Tag cloud"|e}</a></li>
+			<li><a class="picwall_link" href="?do=picwall{$searchcrits}">{"Picture wall"|e}</a></li>
+			<li><a class="daily_link" href="?do=daily">{"Daily"|e}</a></li>
+			<li><a class="notebook_link" href="?searchtags=mynotebook">{"Notebook"|e}</a></li>
+			<li><a class="about_link" title="{"About"|e}" data-target="#aboutModal" data-toggle="modal">?</a></li>
+		{/if}
 
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
-
-
-
-
-
-{/if}
-
-
- </nav>
-<div class="clear"></div>
 
 

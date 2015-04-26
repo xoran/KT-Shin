@@ -5,7 +5,8 @@
 <div id="pageheader">
 	{include="page.header"}
 
-	<div id="headerform">
+	<div class="container-fluid">
+	<div id="headerform" class="fixed-top">
 {if="!ban_canLogin()"}
     You have been banned from login after too many failed attempts. Try later.
 {else}
@@ -18,7 +19,8 @@
     {if="$returnurl"}<input type="hidden" name="returnurl" value="{$returnurl|htmlspecialchars}">{/if}
     </form>
 {/if}
-    </div>
+    </div><!-- #headerform -->
+	</div><!-- .container-fluid -->
 </div>
 
 {include="page.footer"}

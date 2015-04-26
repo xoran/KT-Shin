@@ -7,11 +7,11 @@
 		{else}
 		<img src="images/private_16x16.png#" width="16" height="16" title="Click to see only private links" alt="Click to see only private links">
 		{/if}
-		</a>
-    </div>
+		</a>&nbsp;
+
 {/if}
-    
+
     {if="$previous_page_url"} <a href="{$previous_page_url}" id="paging_older">&#x25C4; {"Older"|e}</a> {/if}
-    <div id="paging_current">page {$page_current} / {$page_max} </div>
     {if="$next_page_url"} <a href="{$next_page_url}" id="paging_newer">{"Newer"|e} &#x25BA;</a> {/if}
+    <span class="pagin">page {$page_current} / {$page_max}</span>
 </div>
