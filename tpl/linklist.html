@@ -162,7 +162,7 @@
             if (!loading)  // If javascript lib is still loading, do not append script to body.
             {
                 var element = document.createElement("script");
-                element.src = "inc/qr.min.js";
+                element.src = "assets/js/qr.min.js";
                 document.body.appendChild(element);
             }
             setTimeout(function() { showQrCode(caller,true);}, 200); // Retry in 200 milliseconds.

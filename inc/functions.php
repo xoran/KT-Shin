@@ -1347,7 +1347,9 @@ function install()
 
     // Display config form:
     list($timezone_form,$timezone_js) = templateTZform();
-    $timezone_html=''; if ($timezone_form!='') $timezone_html='<tr><td valign="top"><b>Timezone:</b></td><td>'.$timezone_form.'</td></tr>';
+    $timezone_html=''; if ($timezone_form!='') $timezone_html='
+        <div class="form-group"><label for="continent" class="col-sm-4 control-label">Timezone
+        '.$timezone_form;
 
     $PAGE = new pageBuilder;
     $PAGE->assign('timezone_html',$timezone_html);
@@ -1393,8 +1395,8 @@ function templateTZform($ptz=false)
         foreach($continents as $continent)
             $continents_html.='<option  value="'.$continent.'"'.($pcontinent==$continent?'selected':'').'>'.$continent.'</option>';
         $cities_html = $cities[$pcontinent];
-        $timezone_form = "Continent: <select name=\"continent\" id=\"continent\" onChange=\"onChangecontinent();\">${continents_html}</select>";
-        $timezone_form .= "&nbsp;&nbsp;&nbsp;&nbsp;City: <select name=\"city\" id=\"city\">${cities[$pcontinent]}</select><br />";
+        $timezone_form = "Continent</label><div class=\"col-sm-8\"> <select class=\"form-control\" name=\"continent\" id=\"continent\" onChange=\"onChangecontinent();\">${continents_html}</select></div></div>";
+        $timezone_form .= "<div class=\"form-group\"><label for=\"city\" class=\"col-sm-4 control-label\">City</label><div class=\"col-sm-8\"><select  class=\"form-control\" name=\"city\" id=\"city\">${cities[$pcontinent]}</select></div></div>";
         $timezone_js = "<script language=\"JavaScript\">";
         $timezone_js .= "function onChangecontinent(){document.getElementById(\"city\").innerHTML = citiescontinent[document.getElementById(\"continent\").value];}";
         $timezone_js .= "var citiescontinent = ".json_encode($cities).";" ;

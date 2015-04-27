@@ -1,7 +1,7 @@
 <?php
-// Shaarli 0.0.41 beta - Shaare your links... 
+// Shaarli 0.0.41 beta - Shaare your links...
 // This version is a fork by Bronco (warriordudimanche.net) and not the original SebSauvage's version
-// 
+//
 // The personal, minimalist, super-fast, no-database delicious clone. By sebsauvage.net
 // http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 // Licence: http://www.opensource.org/licenses/zlib-license.php
@@ -16,8 +16,9 @@ date_default_timezone_set('UTC');
 // I splitted some shaarli's parts into separated files, structure is easier to understand for me (Bronco)
 include('inc/configuration.php');
 include('inc/functions.php');
-include('inc/initialisation.php');
 include('inc/languages.php');
+include('inc/initialisation.php');
+
 // -----------------------------------------------------------------------------------------------
 checkphpversion();
 error_reporting(E_ALL^E_WARNING);  // See all error except warnings.
@@ -75,14 +76,14 @@ if (isset($_POST['login']))
 function renderPage()
 {
     $LINKSDB=new linkdb(isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']);  // Read links from database (and filter private links if used it not logged in).
-    
 
-    
+
+
     // -----------------------------------------------------------------------
     // Bronco: "added this to easily add new get capacities to shaarli"
     include('inc/public_get_commands.php');
     // -----------------------------------------------------------------------
-    
+
 
     // -------- Display login form.
     if (isset($_SERVER["QUERY_STRING"]) && startswith($_SERVER["QUERY_STRING"],'do=login'))
@@ -384,20 +385,20 @@ function renderPage()
     // -----------------------------------------------------------------------
     // Bronco: "$_POST enhancements are in the file included below"
     include('inc/personal_post_actions.php');
-    // -----------------------------------------------------------------------     
-    
+    // -----------------------------------------------------------------------
+
 
 
 
     // -------- User clicked the "Save" button when editing a link: Save link to database.
     /* No longer used: see personal_post_actions.php
-    
+
     if (isset($_POST['save_edit']))
-    { 
+    {
         if (!tokenOk($_POST['token'])) die(e('Wrong token.',false)); // Go away !
         $tags = trim(preg_replace('/\s\s+/',' ', $_POST['lf_tags'])); // Remove multiple spaces.
         $linkdate=$_POST['lf_linkdate'];
-        $url = trim($_POST['lf_url']);        
+        $url = trim($_POST['lf_url']);
         if (!startsWith($url,'http:') && !startsWith($url,'https:') && !startsWith($url,'ftp:') && !startsWith($url,'magnet:') && !startsWith($url,'?'))
             $url = 'http://'.$url;
         $link = array('title'=>trim($_POST['lf_title']),'url'=>$url,'description'=>trim($_POST['lf_description']),'private'=>(isset($_POST['lf_private']) ? 1 : 0),
@@ -416,7 +417,7 @@ function renderPage()
         exit;
     }
     */
-    
+
     // -------- User clicked the "Cancel" button when editing a link.
     if (isset($_POST['cancel_edit']))
     {
@@ -483,7 +484,7 @@ function renderPage()
             $title = (empty($_GET['title']) ? '' : $_GET['title'] ); // Get title if it was provided in URL (by the bookmarklet).
             $description = (empty($_GET['description']) ? '' : $_GET['description']); // Get description if it was provided in URL (by the bookmarklet). [Bronco added that]
             $tags = (empty($_GET['tags']) ? '' : $_GET['tags'] ); // Get tags if it was provided in URL
-            $private = (!empty($_GET['private']) && $_GET['private'] === "1" ? 1 : 0); // Get private if it was provided in URL 
+            $private = (!empty($_GET['private']) && $_GET['private'] === "1" ? 1 : 0); // Get private if it was provided in URL
             if (($url!='') && parse_url($url,PHP_URL_SCHEME)=='') $url = 'http://'.$url;
             // If this is an HTTP link, we try go get the page to extact the title (otherwise we will to straight to the edit form.)
             if (empty($title) && parse_url($url,PHP_URL_SCHEME)=='http')
@@ -494,7 +495,7 @@ function renderPage()
  					 {
                         // Look for charset in html header.
  						preg_match('#<meta .*charset=.*>#Usi', $data, $meta);
- 
+
  						// If found, extract encoding.
  						if (!empty($meta[0]))
  						{
@@ -504,7 +505,7 @@ function renderPage()
 							$html_charset = (!empty($enc[1])) ? strtolower($enc[1]) : 'utf-8';
  						}
  						else { $html_charset = 'utf-8'; }
- 
+
  						// Extract title
  						$title = html_extract_title($data);
  						if (!empty($title))
