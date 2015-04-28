@@ -12,7 +12,8 @@ footer { color: #332CE0; margin: 30px 0; }
 .form-control { background-color: #383838; color: #C5D1DB;  border: 1px solid #0b0d0d !important;  }
 a.qrcode { border: 1px solid #337ab7; padding: 3px !important; margin: 0 !important; vertical-align: middle !important; }
 a.qrcode:hover { border: 1px solid #24ab00; margin-bottom: 10px; }
-h3.ftGreen { margin-bottom: 25px; }
+h3.ftGreen, h3.ftBlue { margin-bottom: 25px; }
+
 .lightText { color: #ACACAC; }
 .row { margin: 0; }
 .topMargin30 { margin-top: 30px; }
@@ -163,6 +164,7 @@ input[type=image] { vertical-align: middle; }
 .pagin { float: right; color: graytext; }
 .navbar-inverse { background-image: linear-gradient(to bottom, #3c3c3c 0px, #222 100%); background-repeat: repeat-x; }
 .form-install { width: 400px !important; }
+.form-group { margin: 15px 0 !important; }
 .row-install {
 	background: url('../../images/bg-pin.png') repeat scroll 0 0 rgba(0, 0, 0, 0);
 	-webkit-box-shadow: 2px 2px 20px 2px #333333;
