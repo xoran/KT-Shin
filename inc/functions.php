@@ -198,10 +198,10 @@ function check_auth($login,$password)
     {   // Login/password is correct.
 		fillSessionInfo();
         logm('Login successful');
-        return True;
+        return true;
     }
     logm('Login failed for user '.$login);
-    return False;
+    return false;
 }
 
 // Returns true if the user is logged in.

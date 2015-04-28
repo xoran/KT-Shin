@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Here is the basic rendering
 
     $PAGE = new pageBuilder;
@@ -11,7 +11,7 @@
         if (strpos($_GET['searchtags'],'mynotebook')!==false){$PAGE->assign('notebook','mynotebook');}else{$PAGE->assign('notebook','');}
     }else{$PAGE->assign('class','home');$PAGE->assign('notebook','');}
     $PAGE->assign('nbpages',ceil(count($LINKSDB)/$GLOBALS['config']['LINKS_PER_PAGE']));
-    // ---------------   
+    // ---------------
     buildLinkList($PAGE,$LINKSDB); // Compute list of links to display
 
      /*if (isset($_GET['searchterm'])){
@@ -20,7 +20,7 @@
         exit('pouf');highLightSearchTerms($linkarray,$searchterm);
     }*/
 
-    
+
     if (isset($_GET['addnote'])){$PAGE->assign('edit_link','edit_note'); }else{$PAGE->assign('edit_link','edit_link');}
     $PAGE->renderPage('linklist');
     exit;

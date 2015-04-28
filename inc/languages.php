@@ -29,7 +29,7 @@ $messages['fr']=array(
 	'tag cloud'=>'Nuage de tags',
     'tag'=>'étiquette',
 	'Search'=>'Trouver',
-    'search keyword'=>'Rechercher un mot clé',
+    'search keyword'=>'Rechercher par mots clés',
 	'or'=>'ou',
 	'filter by tags'=>'Par Etiquettes',
 	'filter by tag'=>'Filtrer par étiquette',
@@ -109,6 +109,7 @@ $messages['fr']=array(
 	"you would mind"=>'Veuillez ',
 	"clicking here"=>'cliquez ici',
     "keywords"=>'mots clés',
+    'you have been banned from login after too many failed attempts. try later.'=>'Vous avez été banni suite à vos trop nombreuses tentatives de connexions infructueuses. Veuillez réessayer plus tard.',
 
 	// js messages
 	'wrong login/password'=>'Mauvais login/mot de passe',

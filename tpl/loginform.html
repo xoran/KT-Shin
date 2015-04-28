@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+  <head>
 	{include="includes"}
 </head>
 <body{if="ban_canLogin()"} onload="document.loginform.login.focus();"{/if}>
@@ -10,11 +10,12 @@
 		<div class="row row-install">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
+
 					<h3 class="ftBlue"><i class="fa fa-beer"></i>&nbsp;{"Login"|e}</h3>
 					{if="!ban_canLogin()"}
-				    	<h3 class="ftGreen">You have been banned from login after too many failed attempts. Try later.</h3>
+				    	<h3 class="ftGreen text-center">{"You have been banned from login after too many failed attempts. Try later."|e}</h3>
 					{else}
-						<form method="post" name="loginform" class="form-horizontal">
+						<form method="post" name="login" class="form-horizontal">
 							<div class="form-group">
 								<label for="login" class="col-sm-4 control-label">{"Login"|e}</label>
 								<div class="col-sm-8">

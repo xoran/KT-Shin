@@ -128,6 +128,8 @@ h3.ftGreen, h3.ftBlue { margin-bottom: 25px; }
 .linkshort a:hover { text-decoration: underline; }
 .columns { overflow:auto; }
 .thumbnail { background-color: #1E1E1E; border: 1px solid #444141; }
+.thumbnailDefault { text-align:center; padding: 5px 0; }
+div.thumbnailDefautl + a > img { border: 1px solid #000; }
 .permadate { margin: 5px 0; }
 .permaqr { margin-top: 5px; padding: 3px 0; }
 div#permalinkQrcode {
@@ -214,6 +216,5 @@ input[type=image] { vertical-align: middle; }
 .mynotebook .daily_link,.mynotebook .tagcloud_link,.mynotebook .picwall_link,.mynotebook .addlink_link,.mynotebook .shaareyourlinks,.mynotebook .rssfeed_link,.mynotebook .atomfeed_link
 { display: none; }
 
-/* KT_Shin add styles */
 #headerform { background: #232323; box-shadow: 4px 4px 5px #000; }
 

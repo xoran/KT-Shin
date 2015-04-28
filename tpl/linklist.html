@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
-<head>
-	{include="includes"}
+<html lang="en">
+  <head>
+ 	{include="includes"}
 </head>
 <body class="{$class} {$search_type}">
 	<div class="container-fluid">
@@ -67,9 +67,17 @@
 				<ol>
 					{loop="links"}
 					<li class="pin pinta {if="$value.class"} {$value.class}{/if}">
-						<div class="thumbnail">
+
 							{if="isset($value.urlimg)&&trim($value.urlimg)!=''"}
-							{$value.urlimg|thumbnail} {else} {$value.url|thumbnail} {/if}</div>
+							<div class="thumbnail">
+								{$value.urlimg|thumbnail}
+							</div>
+							{else}
+							<div class="thumbnailDefault">
+								{$value.url|thumbnail}
+							</div>
+							{/if}
+
 						<div class="linkcontainer">
 							<h1 class="linktitle">
 								<a href="{$redirector}{if="
