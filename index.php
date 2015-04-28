@@ -71,15 +71,15 @@ if (isset($_POST['login']))
     }
     else
     {
-        echo' (5) '.$_POST['token'];
-        var_dump($_SESSION);
+        //echo' (5) '.$_POST['token'];
+        //var_dump($_SESSION);
         ban_loginFailed();
         $redir = '';
         if (isset($_GET['post']))
         {
             $redir = '&post='.urlencode($_GET['post']).(!empty($_GET['title'])?'&title='.urlencode($_GET['title']):'').(!empty($_GET['source'])?'&source='.urlencode($_GET['source']):'');
         }
-        //echo '<script language="JavaScript">alert("'.e('Wrong login/password').'.");document.location=\'?do=login'.$redir.'\';</script>'; // Redirect to login screen.
+        echo '<script language="JavaScript">alert("'.e('Wrong login/password').'.");document.location=\'?do=login'.$redir.'\';</script>'; // Redirect to login screen.
         exit;
     }
 }
