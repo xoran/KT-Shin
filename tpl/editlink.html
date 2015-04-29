@@ -1,38 +1,69 @@
 <!DOCTYPE html>
-<html>
-<head>{include="includes"}
-{if="empty($GLOBALS['disablejquery'])"}<script src="inc/jquery.min.js#"></script><script src="inc/jquery-ui.min.js#"></script>{/if}
-</head>
-<body class="editlink" 
-{if condition="$link.title==''"}onload="document.linkform.lf_title.focus();"
-{elseif condition="$link.description==''"}onload="document.linkform.lf_description.focus();"
-{else}onload="document.linkform.lf_tags.focus();"{/if} >
+<html lang="en">
+  <head>
+	{include="includes"}{$timezone_js}
+	</head>
+<body class="editlink" {if condition="$link.title==''"}onload="document.linkform.lf_title.focus();" {elseif condition="$link.description==''"}onload="document.linkform.lf_description.focus();" {else}onload="document.linkform.lf_tags.focus();"{/if} >
 <div id="pageheader">
 	{include="page.header"}
-	<div id="editlinkform">
-	    <form method="post" name="linkform" action="index.php?{if="isset($bkm_source)"}{$bkm_source}{/if}">
-	        <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
-	        <em>URL</em><br><input type="text" name="lf_url" value="{$link.url|htmlspecialchars}" style="width:100%"><br>
-	        <em>{"Picture's url to illustrate the link"|e}</em><br><input type="text" name="lf_imgurl" value="" style="width:100%"><br>
-	        <em>{"Title"|e}</em><br><input type="text" name="lf_title" value="{$link.title|htmlspecialchars}" style="width:100%"><br>
-	        <em>Description</em><br><textarea name="lf_description" rows="4" cols="25" style="width:100%">{$link.description|htmlspecialchars}</textarea><br>
-	        <em>Tags</em><br><input type="text" id="lf_tags" name="lf_tags" value="{$link.tags|htmlspecialchars}" style="width:100%"><br>
-	        {if condition="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}
-            <input type="checkbox" checked="checked" name="lf_private" id="lf_private">
-            &nbsp;<label for="lf_private"><i>Private</i></label><br>
-            {else}
-            <input type="checkbox"  name="lf_private" id="lf_private">
-            &nbsp;<label for="lf_private"><i>Private</i></label><br>
-            {/if}
-	        <input type="submit" value="Save" name="save_edit" class="bigbutton" style="margin-left:40px;">
-	        <input type="submit" value="Cancel" name="cancel_edit" class="bigbutton" style="margin-left:40px;">
-	        {if condition="!$link_is_new"}<input type="submit" value="Delete" name="delete_link" class="bigbutton" style="margin-left:180px;" onClick="return confirmDeleteLink();">{/if}
-	        <input type="hidden" name="token" value="{$token}">
-	        {if condition="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">{/if}
-	    </form>
-	</div>
-</div>
-{include="page.footer"}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 active-background">
+				<h3 class="ftBlue"><i class="fa fa-edit"></i>&nbsp;{"Edit link"|e}</h3>
+		    	<form method="post" name="linkform" class="form-horizontal" action="index.php?{if="isset($bkm_source)"}{$bkm_source}{/if}">
+			        <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
+					<div class="form-group">
+						<label for="lf_url" class="kt-label">URL</label>
+			        	<input type="text" name="lf_url" value="{$link.url|htmlspecialchars}" class="form-control">
+			        </div>
+			        <div class="form-group">
+			        	<label for="lf_imgurl" class="kt-label">{"Picture's url to illustrate the link"|e}</label>
+			        	<input type="text" name="lf_imgurl" value="" class="form-control">
+			        </div>
+			        <div class="form-group">
+			        	<label for="lf_title" class="kt-label">{"Title"|e}</label>
+			        	<input type="text" name="lf_title" value="{$link.title|htmlspecialchars}" class="form-control">
+			        </div>
+			        <div class="form-group">
+			        	<label for="lf_description" class="kt-label">Description</label>
+			        	<textarea name="lf_description" rows="4" cols="25" class="form-control">{$link.description|htmlspecialchars}</textarea>
+			        </div>
+			        <div class="ui-widget">
+			        	<label for="lf_tags" class="kt-label">Tags</label>
+			        	<input type="text" id="lf_tags" name="lf_tags" value="{$link.tags|htmlspecialchars}" class="form-control">
+			        </div>
+			        <div class="checkbox">
+				        {if condition="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}
+				        	<label for="lf_private" class="kt-label">
+			            		<input type="checkbox" checked="checked" name="lf_private" id="lf_private" > {"Private"|e}
+			            	</label>
+			            {else}
+			            	<label for="lf_private" class="kt-label">
+			            		<input type="checkbox"  name="lf_private" id="lf_private" > {"Private"|e}
+			            	</label>
+			            {/if}
+		            </div>
+		            <div class="form-group">
+		            	<div class="col-sm-4">
+				        	<button type="submit" name="save_edit" class="form-control btnBlue col-sm-2">{"Save"|e}</button>
+				        </div>
+				        <div class="col-sm-4">
+				        	<button type="submit" name="cancel_edit" class="form-control btnBlue">{"Cancel"|e}</button>
+				        </div>
+				        <div class="col-sm-4">
+				        	{if condition="!$link_is_new"}<button type="submit" name="delete_link" class="form-control btnRed" onClick="return confirmDeleteLink();">{"Delete"|e}</button>{/if}
+				        </div>
+				        {if condition="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">{/if}
+				        <input type="hidden" name="token" value="{$token}">
+				    </div>
+		    	</form>
+			</div><!-- .col-md-8 -->
+			<div class="col-md-2"></div>
+	    </div><!-- .row-->
+	</div><!-- .container-fluid -->
+</div><!-- #pageheader -->
+{include="page.footer"} {include="includesfooter"} {include="aboutmodal"}
 {if="($GLOBALS['config']['OPEN_SHAARLI'] || isLoggedIn()) && empty($GLOBALS['disablejquery'])"}
 <script language="JavaScript">
 $(document).ready(function()

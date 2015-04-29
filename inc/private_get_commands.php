@@ -1,4 +1,4 @@
-<?php 
+<?php
 // Private get commands: enhance here shaarli's capacities for the admin
 // only included for the admin ^^
 /*
@@ -24,6 +24,8 @@ if (isset($_SERVER["QUERY_STRING"]) && startswith($_SERVER["QUERY_STRING"],'do=t
         $PAGE->assign('notebook','');
         $PAGE->assign('token',getToken()); // XSRF protection.
         $PAGE->assign('http_referer',(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ''));
+        list($timezone_form,$timezone_js) = templateTZform($GLOBALS['timezone']);
+        $PAGE->assign('timezone_js',$timezone_js);
         $PAGE->renderPage('addnote');
         exit;
     }
@@ -38,6 +40,8 @@ if (isset($_SERVER["QUERY_STRING"]) && startswith($_SERVER["QUERY_STRING"],'do=t
         $PAGE->assign('link_is_new',false);
         $PAGE->assign('token',getToken()); // XSRF protection.
         $PAGE->assign('http_referer',(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ''));
+        list($timezone_form,$timezone_js) = templateTZform($GLOBALS['timezone']);
+        $PAGE->assign('timezone_js',$timezone_js);
         $PAGE->renderPage('editlink');
         exit;
     }
@@ -63,14 +67,14 @@ if (isset($_SERVER["QUERY_STRING"]) && startswith($_SERVER["QUERY_STRING"],'do=t
         // Delete a tag:
         if (!empty($_POST))
         {
-            $needle=array_flip($_POST);$needle=trim($needle['X']); 
+            $needle=array_flip($_POST);$needle=trim($needle['X']);
             $linksToAlter = $LINKSDB->filterTags($needle,true); // true for case-sensitive tag search.
             foreach($linksToAlter as $key=>$value)
             {
                 $tags = explode(' ',trim($value['tags']));
                 unset($tags[array_search($needle,$tags)]); // Remove tag.
                 $value['tags']=trim(implode(' ',$tags));
-                $LINKSDB[$key]=$value;                
+                $LINKSDB[$key]=$value;
             }
             $LINKSDB->savedb(); // save to disk
             header('location: index.php?do=tagcloud');
