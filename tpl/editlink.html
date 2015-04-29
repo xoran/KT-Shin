@@ -29,7 +29,7 @@
 			        	<label for="lf_description" class="kt-label">Description</label>
 			        	<textarea name="lf_description" rows="4" cols="25" class="form-control">{$link.description|htmlspecialchars}</textarea>
 			        </div>
-			        <div class="ui-widget">
+			        <div class="form-group">
 			        	<label for="lf_tags" class="kt-label">Tags</label>
 			        	<input type="text" id="lf_tags" name="lf_tags" value="{$link.tags|htmlspecialchars}" class="form-control">
 			        </div>
@@ -65,12 +65,13 @@
 </div><!-- #pageheader -->
 {include="page.footer"} {include="includesfooter"} {include="aboutmodal"}
 {if="($GLOBALS['config']['OPEN_SHAARLI'] || isLoggedIn()) && empty($GLOBALS['disablejquery'])"}
-<script language="JavaScript">
+<script language="Javascript">
 $(document).ready(function()
 {
     $('#lf_tags').autocomplete({source:'{$source}?ws=tags',minLength:1});
 });
 </script>
 {/if}
+
 </body>
 </html>
