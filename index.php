@@ -25,25 +25,19 @@ error_reporting(E_ALL^E_WARNING);  // See all error except warnings.
 //error_reporting(-1); // See all errors (for debugging only)
 
 // ------------------------------------------------------------------------------------------
-//if (isset($_POST['login'])) echo ' Login OK ';
 // Process login form: Check if login/password is correct.
 if (isset($_POST['login']))
 {
-   // echo' (1) ';
+
     if (!ban_canLogin()) die('I said: NO. You are banned for the moment. Go away.');
 
-    //if(isset($_POST['password'])) echo ' Password OK ';
-    //if(tokenOk($_POST['token'])); echo ' Token OK ';
-    //if(check_auth($_POST['login'], $_POST['password'])) echo ' Check OK ';
-
     if (isset($_POST['password']) && tokenOk($_POST['token']) && (check_auth($_POST['login'], $_POST['password'])))
-    {   // Login/password is ok.
-        //echo' (2) ';
+    {
+        // Login/password is ok.
         ban_loginOk();
         // If user wants to keep the session cookie even after the browser closes:
         if (!empty($_POST['longlastingsession']))
         {
-           // echo' 3 ';
             setcookie('shaarli_staySignedIn', STAY_SIGNED_IN_TOKEN, time()+31536000, WEB_PATH);
             $_SESSION['longlastingsession']=31536000;  // (31536000 seconds = 1 year)
             $_SESSION['expires_on']=time()+$_SESSION['longlastingsession'];  // Set session expiration on server-side.
@@ -55,7 +49,6 @@ if (isset($_POST['login']))
         }
         else // Standard session expiration (=when browser closes)
         {
-            //echo' 4 ';
             $cookiedir = ''; if(dirname($_SERVER['SCRIPT_NAME'])!='/') $cookiedir=dirname($_SERVER["SCRIPT_NAME"]).'/';
             session_set_cookie_params(0,$cookiedir,$_SERVER['HTTP_HOST']); // 0 means "When browser closes"
             session_regenerate_id(true);
@@ -71,8 +64,6 @@ if (isset($_POST['login']))
     }
     else
     {
-        //echo' (5) '.$_POST['token'];
-        //var_dump($_SESSION);
         ban_loginFailed();
         $redir = '';
         if (isset($_GET['post']))

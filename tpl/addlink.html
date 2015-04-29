@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html>
-<head>{include="includes"}</head>
+<html lang="en">
+	<head>
+		{include="includes"}
+	<head>
+</head>
 <body onload="document.addform.post.focus();" class="addlink">
 <div id="pageheader">
 	{include="page.header"}
-	<div id="headerform">
-		<form method="GET" action="" name="addform" class="addform">
-			<input type="text" name="post"/> 
-			<input type="submit" value="{"Add link"|e}" class="bigbutton"/>
-			<div style="clear:both"></div>
-		</form>
-	</div>
-</div>
-{include="page.footer"}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 active-background">
+				<h3 class="ftBlue"><i class="fa fa-plus"></i>&nbsp;{"Add link"|e}</h3>
+				<form method="GET" action="" name="addform" class="form-horizontal">
+					<div class="form-group">
+						<label for="post" class="col-sm-4 control-label">{"New Link"|e}</label>
+							<div class="col-sm-8">
+								<input type="text" name="post" class="form-control"/>
+							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-8">
+							<input type="submit" value="{"Add link"|e}" class="form-control btnBlue"/>
+						</div>
+					</div>
+
+				</form></div><!-- .col-md-8 -->
+			<div class="col-md-3"></div>
+	    </div><!-- .row-->
+	</div><!-- .container-fluid -->
+</div><!-- #pageheader -->
+{include="page.footer"} {include="includesfooter"} {include="aboutmodal"}
 </body>
 </html>

@@ -167,7 +167,8 @@ input[type=image] { vertical-align: middle; }
 .navbar-inverse { background-image: linear-gradient(to bottom, #3c3c3c 0px, #222 100%); background-repeat: repeat-x; }
 .form-install { width: 400px !important; }
 .form-group { margin: 15px 0 !important; }
-.row-install {
+.ftXs { font-size: 0.5em; }
+.active-background {
 	background: url('../../images/bg-pin.png') repeat scroll 0 0 rgba(0, 0, 0, 0);
 	-webkit-box-shadow: 2px 2px 20px 2px #333333;
 	-moz-box-shadow: 2px 2px 20px 2px #333333;
@@ -175,6 +176,14 @@ input[type=image] { vertical-align: middle; }
 	-ms-box-shadow: 2px 2px 20px 2px #333333;
 	box-shadow: 2px 2px 20px 2px #333333;
 	margin-bottom: 25px;
+}
+.btnBlue {
+	background: #0778B3;
+    background-image: linear-gradient(to bottom, #11c4ff 0px, #014883 100%);
+    background-repeat: repeat-x;
+    border: 1px solid #000;
+    border-radius: 3px;
+	color: #000;
 }
 
 /* Highlight search results */
