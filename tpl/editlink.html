@@ -3,7 +3,7 @@
   <head>
 	{include="includes"}{$timezone_js}
 	</head>
-<body class="editlink" {if condition="$link.title==''"}onload="document.linkform.lf_title.focus();" {elseif condition="$link.description==''"}onload="document.linkform.lf_description.focus();" {else}onload="document.linkform.lf_tags.focus();"{/if} >
+<body class="editlink" >
 <div id="pageheader">
 	{include="page.header"}
 	<div class="container-fluid">
@@ -69,6 +69,7 @@
 $(document).ready(function()
 {
     $('#lf_tags').autocomplete({source:'{$source}?ws=tags',minLength:1});
+
 });
 </script>
 {/if}

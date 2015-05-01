@@ -321,13 +321,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f3a3a', end
   background-image: none;
 }
 */
+/**************************************/
+
 .ui-autocomplete {
-	position: absolute; !important;
+	/*position: absolute; !important;
 	display: block;
 	top: 500px !important;
 	width: 500px;
 	left: 50px !important;
-    z-index: 1 !important;
+    z-index: 1 !important;*/
 	background-color: #333333;
 
 }
