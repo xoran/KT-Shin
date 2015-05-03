@@ -1,5 +1,5 @@
 # KT-Shin
-** !! Project under development !! **
+**!! Project under development !!**
 
 Milestones:
 - The first step is going to be changing the basic theme : Actually in progress
