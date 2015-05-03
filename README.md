@@ -1,6 +1,8 @@
 # KT-Shin
+** !! Project under development !! **
+
 Milestones:
-- The first step is going to be changing the basic theme : actually in progress
+- The first step is going to be changing the basic theme : Actually in progress
 
 KT-Shin is a project forked from [Shinterest](https://github.com/broncowdd/Shinterest)
 

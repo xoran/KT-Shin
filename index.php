@@ -66,11 +66,13 @@ if (isset($_POST['login']))
     {
         ban_loginFailed();
         $redir = '';
+        $_SESSION['badlogin'] = e('wrong login or password', FALSE);
         if (isset($_GET['post']))
         {
             $redir = '&post='.urlencode($_GET['post']).(!empty($_GET['title'])?'&title='.urlencode($_GET['title']):'').(!empty($_GET['source'])?'&source='.urlencode($_GET['source']):'');
         }
-        echo '<script language="JavaScript">alert("'.e('Wrong login/password').'.");document.location=\'?do=login'.$redir.'\';</script>'; // Redirect to login screen.
+        //echo '<script language="JavaScript">alert("'.$msg.'.");document.location=\'?do=login'.$redir.'\';</script>'; // Redirect to login screen.
+        echo '<script language="JavaScript">document.location=\'?do=login'.$redir.'\';</script>'; // Redirect to login screen.
         exit;
     }
 }
@@ -98,8 +100,13 @@ function renderPage()
         $token=''; if (ban_canLogin()) $token=getToken(); // Do not waste token generation if not useful.
         $PAGE = new pageBuilder;
         $PAGE->assign('token',$token);
+        if(isset($_SESSION['badlogin']))
+            $PAGE->assign('msg', $_SESSION['badlogin']);
+        else
+            $PAGE->assign('msg', NULL);
         $PAGE->assign('returnurl',(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER']:''));
         $PAGE->renderPage('loginform');
+        unset($_SESSION['badlogin']);
         exit;
     }
     // -------- User wants to logout.
@@ -237,17 +244,6 @@ function renderPage()
         include('inc/render_basic_page.php');
 
     }
-
-
-
-
-
-
-
-
-
-
-
     // -------- All other functions are reserved for the registered user:
 
     // -----------------------------------------------------------------------

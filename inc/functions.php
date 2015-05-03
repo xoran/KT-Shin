@@ -256,8 +256,10 @@ function ban_loginFailed()
 // Signals a successful login. Resets failed login counter.
 function ban_loginOk()
 {
-    $ip=$_SERVER["REMOTE_ADDR"]; $gb=$GLOBALS['IPBANS'];
-    unset($gb['FAILURES'][$ip]); unset($gb['BANS'][$ip]);
+    $ip=$_SERVER["REMOTE_ADDR"];
+    $gb=$GLOBALS['IPBANS'];
+    unset($gb['FAILURES'][$ip]);
+    unset($gb['BANS'][$ip]);
     $GLOBALS['IPBANS'] = $gb;
     file_put_contents($GLOBALS['config']['IPBANS_FILENAME'], "<?php\n\$GLOBALS['IPBANS']=".var_export($gb,true).";\n?>");
 }

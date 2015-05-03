@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
-<head>{include="includes"}
-{if="empty($GLOBALS['disablejquery'])"}<script src="inc/jquery.min.js#"></script><script src="inc/jquery-ui.min.js#"></script>{/if}
+<html lang="en">
+	<head>
+		{include="includes"}
+	<head>
 </head>
-<body class="addnote mynotebook" 
+<body class="addnote mynotebook"
 {if condition="$link.title==''"}onload="document.linkform.lf_title.focus();"
 {elseif condition="$link.description==''"}onload="document.linkform.lf_description.focus();"
 {else}onload="document.linkform.lf_tags.focus();"{/if} >
 <div id="pageheader">
-	{include="page.header"}	
+	{include="page.header"}
 	<div id="editlinkform"><h1>{"New note"|e}</h1>
 	    <form method="post" name="linkform" action="index.php">
 	        <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
@@ -19,7 +20,7 @@
 	        <br>
 	        <input type="checkbox" checked="checked" name="lf_private" id="lf_private">
             &nbsp;<label for="lf_private"><em>{"Private"|e}</em></label><br>
-            
+
 	        <input type="submit" value="{"Save"|e}" name="save_edit" class="bigbutton">
 	        <input type="submit" value="{"Cancel"|e}" name="cancel_edit" class="bigbutton">
 	        {if condition="!$link_is_new"}<input type="submit" value="{"Delete"|e}" name="delete_link" class="bigbutton"  onClick="return confirmDeleteLink();">{/if}

@@ -113,7 +113,7 @@ $messages['fr']=array(
     'edit link'=>'Editer le lien',
 
 	// js messages
-	'wrong login/password'=>'Mauvais login/mot de passe',
+	'wrong login or password'=>'Mauvais login et/ou mot de passe',
 	'are you sure you want to delete this link'=>'Voulez-vous vraiment effacer ce lien',
 	'your password has been changed'=>'Votre mot de passe a bien été modifié',
 	'configuration was saved'=>'La configuration  a bien été modifiée',
