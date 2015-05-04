@@ -2,8 +2,7 @@
 <html lang="en">
 	<head>
 		{include="includes"}
-	<head>
-</head>
+	</head>
 <body class="addnote mynotebook"
 {if condition="$link.title==''"}onload="document.linkform.lf_title.focus();"
 {elseif condition="$link.description==''"}onload="document.linkform.lf_description.focus();"
@@ -19,7 +18,7 @@
 			        <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
 					<div class="form-group">
 						<label for="lf_url" class="kt-label">{"Picture's url to illustrate the note"|e}</label>
-			        	<input type="text" name="lf_url" value="" class="form-control">
+			        	<input type="text" name="lf_url" value="{$link.url|htmlspecialchars}" class="form-control">
 			        </div>
 			        <div class="form-group">
 			        	<label for="lf_title" class="kt-label">{"Title"|e}</label>
