@@ -7,9 +7,9 @@ body {
 	background: url("../../images/bg-carbon.jpg") repeat scroll center top #0b0d0d;
 }
 li.nostyle { list-style: none; }
-footer { color: #332CE0; margin: 30px 0; }
-#footer {  text-align: center; color: graytext;}
+#footer { color: #332CE0; margin: 15px 0 30px 0; text-align: center; color: graytext; }
 .form-control { background-color: #383838; color: #C5D1DB;  border: 1px solid #0b0d0d !important;  }
+a { //color: #0674ce !important; }
 a.qrcode { border: 1px solid #337ab7; padding: 3px !important; vertical-align: middle !important; }
 a.qrcode:hover { border: 1px solid #24ab00; margin-bottom: 10px; }
 h3.ftGreen, h3.ftBlue { margin-bottom: 25px; }
@@ -83,10 +83,8 @@ textarea,
 	}
 .pinta { width: 270px; }
 #linklist li.private {box-shadow: 0 1px 2px rgba(255, 0, 0, 0.3); background: rgba(255, 0, 0, 0.3); }
-/*#linklist:hover li.pin  {  padding:0; opacity:0.4;}*/
 #linklist li.pin:hover { opacity: 1; }
 #linklist li.pin a:hover { color: #24ab00 !important; }
-.private  .linktitle a { }
 .linktitle {
 	font-size: 1.2em;
 	padding: 5px 10px ;
@@ -95,7 +93,7 @@ textarea,
 	border-top: 1px solid #444141;
 	border-bottom: 1px dashed #444141;
 }
-.linktitle a { text-decoration: none; text-shadow: 0 0px 1px; }
+.linktitle a, #footer a { color: #0674ce !important; text-shadow: 2px 2px 2px rgba(0, 0, 0, 1); }
 .linktitle a:hover { color: #F57900; }
 .linkdate { font-size: 0.7em; color: #25F422; display: inline-block; }
 .linkdate a { text-decoration: none; }
@@ -280,7 +278,6 @@ input[type=image] { vertical-align: middle; }
 
 }
 .ui-menu-item a { color: #FFF; }
-
 
 
 /* Notebook style by Bronco*/

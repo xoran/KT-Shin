@@ -10,26 +10,60 @@
 {else}onload="document.linkform.lf_tags.focus();"{/if} >
 <div id="pageheader">
 	{include="page.header"}
-	<div id="editlinkform"><h1>{"New note"|e}</h1>
-	    <form method="post" name="linkform" action="index.php">
-	        <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
-	        <em>{"Picture's url to illustrate the note"|e}</em><br><input type="text" name="lf_url" value="{$link.url|htmlspecialchars}"><br><br>
-	        <em>{"Title"|e}</em><br><input type="text" name="lf_title" value="{$link.title|htmlspecialchars}"><br>
-	        <em>{"Note's content"|e}</em><br><textarea name="lf_description" rows="25" cols="25">{$link.description|htmlspecialchars}</textarea><br>
-	        <em>Tags</em><br><input type="text" id="lf_tags" name="lf_tags" value="{if condition="$link_is_new"}mynotebook{/if} {$link.tags|htmlspecialchars}">
-	        <br>
-	        <input type="checkbox" checked="checked" name="lf_private" id="lf_private">
-            &nbsp;<label for="lf_private"><em>{"Private"|e}</em></label><br>
-
-	        <input type="submit" value="{"Save"|e}" name="save_edit" class="bigbutton">
-	        <input type="submit" value="{"Cancel"|e}" name="cancel_edit" class="bigbutton">
-	        {if condition="!$link_is_new"}<input type="submit" value="{"Delete"|e}" name="delete_link" class="bigbutton"  onClick="return confirmDeleteLink();">{/if}
-	        <input type="hidden" name="token" value="{$token}">
-	        {if condition="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">{/if}
-	    </form>
-	</div>
-</div>
-{include="page.footer"}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 active-background">
+				<h3 class="ftBlue"><i class="fa fa-plus"></i>&nbsp;{"New note"|e}</h3>
+		    	<form method="post" name="linkform" class="form-horizontal" action="index.php">
+			        <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
+					<div class="form-group">
+						<label for="lf_url" class="kt-label">{"Picture's url to illustrate the note"|e}</label>
+			        	<input type="text" name="lf_url" value="" class="form-control">
+			        </div>
+			        <div class="form-group">
+			        	<label for="lf_title" class="kt-label">{"Title"|e}</label>
+			        	<input type="text" name="lf_title" value="{$link.title|htmlspecialchars}" class="form-control">
+			        </div>
+			        <div class="form-group">
+			        	<label for="lf_description" class="kt-label">Description</label>
+			        	<textarea name="lf_description" rows="4" cols="25" class="form-control">{$link.description|htmlspecialchars}</textarea>
+			        </div>
+			        <div class="form-group">
+			        	<label for="lf_tags" class="kt-label">Tags</label>
+			        	<input type="text" id="lf_tags" name="lf_tags" value="mynotebook" class="form-control">
+			        </div>
+			        <div class="checkbox">
+				        {if condition="($link_is_new && $GLOBALS['privateLinkByDefault']==true) || $link.private == true"}
+				        	<label for="lf_private" class="kt-label">
+			            		<input type="checkbox" checked="checked" name="lf_private" id="lf_private" > {"Private"|e}
+			            	</label>
+			            {else}
+			            	<label for="lf_private" class="kt-label">
+			            		<input type="checkbox"  name="lf_private" id="lf_private" > {"Private"|e}
+			            	</label>
+			            {/if}
+		            </div>
+		            <div class="form-group">
+		            	<div class="col-sm-4">
+				        	<button type="submit" name="save_edit" class="form-control btnBlue col-sm-2">{"Save"|e}</button>
+				        </div>
+				        <div class="col-sm-4">
+				        	<button type="submit" name="cancel_edit" class="form-control btnBlue">{"Cancel"|e}</button>
+				        </div>
+				        <div class="col-sm-4">
+				        	{if condition="!$link_is_new"}<button type="submit" name="delete_link" class="form-control btnRed" onClick="return confirmDeleteLink();">{"Delete"|e}</button>{/if}
+				        </div>
+				        {if condition="$http_referer"}<input type="hidden" name="returnurl" value="{$http_referer|htmlspecialchars}">{/if}
+				        <input type="hidden" name="token" value="{$token}">
+				    </div>
+		    	</form>
+			</div><!-- .col-md-8 -->
+			<div class="col-md-2"></div>
+	    </div><!-- .row-->
+	</div><!-- .container-fluid -->
+</div><!-- #pageheader -->
+{include="page.footer"} {include="includesfooter"} {include="aboutmodal"}
 {if="($GLOBALS['config']['OPEN_SHAARLI'] || isLoggedIn()) && empty($GLOBALS['disablejquery'])"}
 <script language="JavaScript">
 $(document).ready(function()

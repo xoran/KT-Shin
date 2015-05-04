@@ -56,6 +56,8 @@ if (isset($_SERVER["QUERY_STRING"]) && startswith($_SERVER["QUERY_STRING"],'do=t
         $PAGE->assign('link_is_new',false);
         $PAGE->assign('token',getToken()); // XSRF protection.
         $PAGE->assign('http_referer',(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : ''));
+        list($timezone_form,$timezone_js) = templateTZform($GLOBALS['timezone']);
+        $PAGE->assign('timezone_js',$timezone_js);
         $PAGE->renderPage('addnote');
         exit;
     }

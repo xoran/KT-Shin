@@ -71,7 +71,7 @@ if (isset($_POST['login']))
         {
             $redir = '&post='.urlencode($_GET['post']).(!empty($_GET['title'])?'&title='.urlencode($_GET['title']):'').(!empty($_GET['source'])?'&source='.urlencode($_GET['source']):'');
         }
-        echo '<script language="JavaScript">document.location=\'?do=login'.$redir.'\';</script>'; // Redirect to login screen.
+        header('Location: ?do=login'.$redir);
         exit;
     }
 }
