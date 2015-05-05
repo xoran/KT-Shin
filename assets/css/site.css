@@ -7,9 +7,7 @@ body {
 	background: url("../../images/bg-carbon.jpg") repeat scroll center top #0b0d0d;
 }
 li.nostyle { list-style: none; }
-#footer { color: #332CE0; margin: 15px 0 30px 0; text-align: center; color: graytext; }
-.form-control { background-color: #383838; color: #C5D1DB;  border: 1px solid #0b0d0d !important;  }
-a { //color: #0674ce !important; }
+a { text-decoration: none !important; }
 a.qrcode { border: 1px solid #337ab7; padding: 3px !important; vertical-align: middle !important; }
 a.qrcode:hover { border: 1px solid #24ab00; margin-bottom: 10px; }
 h3.ftGreen, h3.ftBlue { margin-bottom: 25px; }
@@ -28,7 +26,9 @@ textarea,
   	-moz-border-radius: 3px;
   	border-radius: 3px;
 }
-
+#footer { color: #332CE0; margin: 15px 0 30px 0; text-align: center; color: graytext; }
+.form-group small { color: #00b7ea; }
+.form-control { background-color: #383838; color: #C5D1DB;  border: 1px solid #0b0d0d !important;  }
 .lightText { color: #ACACAC; }
 .row { margin: 0; }
 .topMargin30 { margin-top: 30px; }
@@ -45,6 +45,23 @@ textarea,
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fc2c65', endColorstr='#f90042',GradientType=0 );
  }
 .greySpan { background: #7F7F7F !important; color: #FFF !important; }
+.elWhite { color: #FFF !important; }
+.smallbutton
+{
+ 	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background: #D7E9F7;
+	border: 1px solid #FFF;
+	padding: 2px 5px;
+	-webkit-box-shadow: 2px 2px 5px 2px #333333;
+	-moz-box-shadow: 2px 2px 5px 2px #333333;
+	-o-box-shadow: 2px 2px 5px 2px #333333;
+	-ms-box-shadow: 2px 2px 5px 2px #333333;
+	box-shadow: 2px 2px 5px 2px #333333;
+
+}
+a.smallbutton { color: #000 !important; }
 .header { position: fixed; background: #FFF; z-index: 1; }
 .content { margin-top: 140px }
 .about_link { cursor: pointer; }
@@ -71,7 +88,7 @@ textarea,
 	background: linear-gradient(to bottom,  #00b7ea 0%,#0059a8 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b7ea', endColorstr='#0059a8',GradientType=0 );
     border: 1px solid #000;
-	padding: 3px 5px;
+	padding: 6px 5px;
 }
 .subDiv > p > a { color: #000; }
 .subDiv > p > a:hover { color: #fff; text-decoration: none; }

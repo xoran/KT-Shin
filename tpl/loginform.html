@@ -11,7 +11,7 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8 active-background">
 					{if="isset($msg)"}
-					<div class="alert alert-danger redSpan text-center topMargin30" role="alert">{$msg|htmlspecialchars}</div>
+						<div id="alert" class="alert alert-danger redSpan text-center topMargin30" role="alert">{$msg|htmlspecialchars}</div>
 					{/if}
 					<h3 class="ftBlue"><i class="fa fa-beer"></i>&nbsp;{"Login"|e}</h3>
 					{if="!ban_canLogin()"}

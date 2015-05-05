@@ -49,8 +49,8 @@ $messages['fr']=array(
 	'all links of one day in a single page.'=>'Tous les liens du jour en une page.',
 	'previous day'=>'Jour précédent',
 	'next day'=>'Jour suivant',
-	'change password'=>'Changer le mot de passe',
-	'configure your shaarli'=>'Configurer Shaarli',
+	'change password'=>'Changer votre mot de passe',
+	'configure your shaarli'=>'Configurer Shaarli / KT-Shin',
 	'rename or delete tags'=>'Renommer ou effacer des tags',
 	'import'=>'Importer',
 	'export'=>'Exporter',
@@ -111,6 +111,8 @@ $messages['fr']=array(
     "keywords"=>'mots clés',
     'you have been banned from login after too many failed attempts. try later.'=>'Vous avez été banni suite à vos trop nombreuses tentatives de connexions infructueuses. Veuillez réessayer plus tard.',
     'edit link'=>'Editer le lien',
+    'the old password is not correct'=>'L\'ancien mot de passe n\'est pas correct',
+    'back to tools'=>'Retourner aux Outils',
 
 	// js messages
 	'wrong login or password'=>'Mauvais login et/ou mot de passe',

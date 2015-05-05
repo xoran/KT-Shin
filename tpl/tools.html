@@ -10,20 +10,23 @@
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8 active-background">
+				{if="isset($msg)"}
+					<div id="alert" class="alert alert-danger redSpan text-center topMargin30" role="alert">{$msg|htmlspecialchars}</div>
+				{/if}
 				<h3 class="ftBlue"><i class="fa fa-wrench"></i>&nbsp;{"Tools"|e}</h3>
 				<div class="subDiv">
-					{if="!$GLOBALS['config']['OPEN_SHAARLI']"}<p><a href="?do=changepasswd"><strong>{"Change password"|e}</strong></a></p>{/if}
-					<p><a href="?do=configure"><i class="fa fa-gear"></i> <strong>{"Configure your Shaarli"|e}</strong></a></p>
-					<p><a href="?do=changetag"><strong>{"Rename or delete tags"|e}</strong></a></p>
+					{if="!$GLOBALS['config']['OPEN_SHAARLI']"}<p><a href="?do=changepasswd"><i class="fa fa-lock elWhite"></i>&nbsp; <strong>{"Change password"|e}</strong></a></p>{/if}
+					<p><a href="?do=configure"><i class="fa fa-gear elWhite"></i>&nbsp; <strong>{"Configure your Shaarli"|e}</strong></a></p>
+					<p><a href="?do=changetag"><i class="fa fa-edit elWhite"></i>&nbsp; <strong>{"Rename or delete tags"|e}</strong></a></p>
 				</div>
 				<div class="subDiv">
-					<p><a href="?do=import"><strong>{"Import"|e}</strong> :  {"Import Netscape html bookmarks (as exported from Firefox, Chrome, Opera, delicious...)"|e}</a></p>
-					<p><a href="?do=export"><strong>{"Export"|e}</strong> :  {"Export Netscape html bookmarks (which can be imported in Firefox, Chrome, Opera, delicious...)"|e}</a></p>
+					<p><a href="?do=import"><i class="fa fa-sign-in elWhite"></i>&nbsp; <strong>{"Import"|e}</strong> :  {"Import Netscape html bookmarks (as exported from Firefox, Chrome, Opera, delicious...)"|e}</a></p>
+					<p><a href="?do=export"><i class="fa fa-sign-out elWhite"></i>&nbsp; <strong>{"Export"|e}</strong> :  {"Export Netscape html bookmarks (which can be imported in Firefox, Chrome, Opera, delicious...)"|e}</a></p>
 				</div>
 				<div class="subDiv">
-					<p><a class="smallbutton" onclick="alert('{"Drag this link to your bookmarks toolbar (or right-click it and choose Bookmark This Link....)"|e}');return false;" href="{noparse}javascript:javascript:(function(){var%20url%20=%20location.href;var%20title%20=%20document.title%20||%20url;window.open('{$pageabsaddr}?post='%20+%20encodeURIComponent(url)+'&amp;title='%20+%20encodeURIComponent(title)+'&amp;source=bookmarklet','_blank','menubar=no,height=500,width=600,toolbar=no,scrollbars=no,status=no,dialog=1');})();">{/noparse}<strong>{"Shaare link"|e}</strong></a> <a href="#" style="clear:none;"><span>&#x21D0; {"Drag this link to your bookmarks toolbar (or right-click it and choose Bookmark This Link....)"|e}. &nbsp;{"Then click <em>Shaare link</em> button in any page you want to share"|e}.</span></a></p>
-					<p><a class="smallbutton" onclick="alert('{"Drag this link to your bookmarks toolbar (or right-click it and choose Bookmark This Link....)"|e}');return false;" href="{$pageabsaddr}?post=#&addnote=true"><strong>{"Add note to notebook"|e}</strong></a> <a href="#" style="clear:none;"><span>&#x21D0; {"Drag this link to your bookmarks toolbar (or right-click it and choose Bookmark This Link....)"|e}. &nbsp;{"Then click on the bookmark button to add a note"|e}.</span></a></p>
-					<p><a class="smallbutton" onclick="alert({"Drag this link to your bookmarks toolbar (or right-click it and choose Bookmark This Link....)"|e}');return false;" href="{$pageabsaddr}?searchtags=mynotebook"><strong>{"Link to my notebook"|e}</strong></a> <a href="#" style="clear:none;"><span>&#x21D0; {"This is the link to your personal notebook"|e}</span></a></p>
+					<p><a class="smallbutton" onclick="alert('{"Drag this link to your bookmarks toolbar (or right-click it and choose Bookmark This Link....)"|e}');return false;" href="{noparse}javascript:javascript:(function(){var%20url%20=%20location.href;var%20title%20=%20document.title%20||%20url;window.open('{$pageabsaddr}?post='%20+%20encodeURIComponent(url)+'&amp;title='%20+%20encodeURIComponent(title)+'&amp;source=bookmarklet','_blank','menubar=no,height=500,width=600,toolbar=no,scrollbars=no,status=no,dialog=1');})();">{/noparse}<strong>{"Shaare link"|e}</strong></a> <a href="#" style="clear:none;"><span>&nbsp; &#x21D0; {"Drag this link to your bookmarks toolbar (or right-click it and choose Bookmark This Link....)"|e}. &nbsp;{"Then click <em>Shaare link</em> button in any page you want to share"|e}.</span></a></p>
+					<p><a class="smallbutton" onclick="alert('{"Drag this link to your bookmarks toolbar (or right-click it and choose Bookmark This Link....)"|e}');return false;" href="{$pageabsaddr}?post=#&addnote=true"><strong>{"Add note to notebook"|e}</strong></a> <a href="#" style="clear:none;"><span>&nbsp; &#x21D0; {"Drag this link to your bookmarks toolbar (or right-click it and choose Bookmark This Link....)"|e}. &nbsp;{"Then click on the bookmark button to add a note"|e}.</span></a></p>
+					<p><a class="smallbutton" onclick="alert({"Drag this link to your bookmarks toolbar (or right-click it and choose Bookmark This Link....)"|e}');return false;" href="{$pageabsaddr}?searchtags=mynotebook"><strong>{"Link to my notebook"|e}</strong></a> <a href="#" style="clear:none;"><span>&nbsp; &#x21D0; {"This is the link to your personal notebook"|e}</span></a></p>
 				</div>
 			</div><!-- .col-md-8 -->
 			<div class="col-md-2"></div>

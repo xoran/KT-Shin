@@ -23,8 +23,11 @@ include('inc/initialisation.php');
 checkphpversion();
 error_reporting(E_ALL^E_WARNING);  // See all error except warnings.
 //error_reporting(-1); // See all errors (for debugging only)
+//------------------------------------------------------------------------------------------------
+//Add on KT-Shin by Kentaro
+//$_SESSION['infoMsg'] = NULL;
 
-// ------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------
 // Process login form: Check if login/password is correct.
 if (isset($_POST['login']))
 {
@@ -58,7 +61,8 @@ if (isset($_POST['login']))
         if (isset($_POST['returnurl']))
         {
             if (endsWith($_POST['returnurl'],'?do=login')) { header('Location: ?'); exit; } // Prevent loops over login screen.
-            header('Location: '.$_POST['returnurl']); exit;
+            header('Location: '.$_POST['returnurl']);
+            exit;
         }
         header('Location: ?'); exit;
     }
@@ -66,7 +70,7 @@ if (isset($_POST['login']))
     {
         ban_loginFailed();
         $redir = '';
-        $_SESSION['badlogin'] = e('wrong login or password', FALSE);
+        $_SESSION['infoMsg'] = e('wrong login or password', FALSE);
         if (isset($_GET['post']))
         {
             $redir = '&post='.urlencode($_GET['post']).(!empty($_GET['title'])?'&title='.urlencode($_GET['title']):'').(!empty($_GET['source'])?'&source='.urlencode($_GET['source']):'');
@@ -99,13 +103,13 @@ function renderPage()
         $token=''; if (ban_canLogin()) $token=getToken(); // Do not waste token generation if not useful.
         $PAGE = new pageBuilder;
         $PAGE->assign('token',$token);
-        if(isset($_SESSION['badlogin']))
-            $PAGE->assign('msg', $_SESSION['badlogin']);
+        if(isset($_SESSION['infoMsg']))
+            $PAGE->assign('msg', $_SESSION['infoMsg']);
         else
             $PAGE->assign('msg', NULL);
         $PAGE->assign('returnurl',(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER']:''));
         $PAGE->renderPage('loginform');
-        unset($_SESSION['badlogin']);
+        unset($_SESSION['infoMsg']);
         exit;
     }
     // -------- User wants to logout.
@@ -257,7 +261,12 @@ function renderPage()
         $PAGE = new pageBuilder;
         $PAGE->assign('linkcount',count($LINKSDB));
         $PAGE->assign('pageabsaddr',indexUrl());
+        if(isset($_SESSION['infoMsg']))
+            $PAGE->assign('msg', $_SESSION['infoMsg']);
+        else
+            $PAGE->assign('msg', NULL);
         $PAGE->renderPage('tools');
+        unset($_SESSION['infoMsg']);
         exit;
     }
 
@@ -271,12 +280,19 @@ function renderPage()
 
             // Make sure old password is correct.
             $oldhash = sha1($_POST['oldpassword'].$GLOBALS['login'].$GLOBALS['salt']);
-            if ($oldhash!=$GLOBALS['hash']) { echo '<script language="JavaScript">alert("The old password is not correct.");document.location=\'?do=changepasswd\';</script>'; exit; }
+            if ($oldhash!=$GLOBALS['hash']) {
+                $_SESSION['infoMsg'] = e('The old password is not correct', FALSE);
+                //echo '<script language="JavaScript">alert("The old password is not correct.");document.location=\'?do=changepasswd\';</script>'; exit;
+                header('Location: ?do=changepasswd');
+                exit;
+            }
             // Save new password
             $GLOBALS['salt'] = sha1(uniqid('',true).'_'.mt_rand()); // Salt renders rainbow-tables attacks useless.
             $GLOBALS['hash'] = sha1($_POST['setpassword'].$GLOBALS['login'].$GLOBALS['salt']);
             writeConfig();
-            echo '<script language="JavaScript">alert("'.e('Your password has been changed',false).'.");document.location=\'?do=tools\';</script>';
+            $_SESSION['infoMsg'] = e('Your password has been changed', FALSE);
+            //echo '<script language="JavaScript">alert("'.e('Your password has been changed',false).'.");document.location=\'?do=tools\';</script>';
+            header('Location: ?do=tools');
             exit;
         }
         else // show the change password form.
@@ -284,7 +300,12 @@ function renderPage()
             $PAGE = new pageBuilder;
             $PAGE->assign('linkcount',count($LINKSDB));
             $PAGE->assign('token',getToken());
+            if(isset($_SESSION['infoMsg']))
+                $PAGE->assign('msg', $_SESSION['infoMsg']);
+            else
+                $PAGE->assign('msg', NULL);
             $PAGE->renderPage('changepassword');
+            unset($_SESSION['infoMsg']);
             exit;
         }
     }
@@ -317,7 +338,10 @@ function renderPage()
             $PAGE->assign('title',htmlspecialchars( empty($GLOBALS['title']) ? '' : $GLOBALS['title'] , ENT_QUOTES));
             $PAGE->assign('redirector',htmlspecialchars( empty($GLOBALS['redirector']) ? '' : $GLOBALS['redirector'] , ENT_QUOTES));
             list($timezone_form,$timezone_js) = templateTZform($GLOBALS['timezone']);
-            $PAGE->assign('timezone_form',$timezone_form); // FIXME: put entire tz form generation in template ?
+            $timezone_html=''; if ($timezone_form!='') $timezone_html='
+            <div class="form-group"><label for="continent" class="col-sm-4 control-label">Timezone
+            '.$timezone_form;
+            $PAGE->assign('timezone_form',$timezone_html); // FIXME: put entire tz form generation in template ?
             $PAGE->assign('timezone_js',$timezone_js);
             $PAGE->renderPage('configure');
             exit;
