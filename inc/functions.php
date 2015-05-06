@@ -26,6 +26,7 @@ function checkUpdate()
     if (!is_file($GLOBALS['config']['UPDATECHECK_FILENAME']) || (filemtime($GLOBALS['config']['UPDATECHECK_FILENAME'])<time()-($GLOBALS['config']['UPDATECHECK_INTERVAL'])))
     {
         $version=shaarli_version;
+
         list($httpstatus,$headers,$data) = getHTTP('http://sebsauvage.net/files/shaarli_version.txt',2);
         if (strpos($httpstatus,'200 OK')!==false) $version=$data;
         // If failed, nevermind. We don't want to bother the user with that.
@@ -36,7 +37,6 @@ function checkUpdate()
     if (version_compare($newestversion,shaarli_version)==1) return $newestversion;
     return '';
 }
-
 
 // -----------------------------------------------------------------------------------------------
 // Simple cache system (mainly for the RSS/ATOM feeds).

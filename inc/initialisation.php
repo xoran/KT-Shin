@@ -1,4 +1,4 @@
-<?php 
+<?php
 // initialisation
 
 include "inc/rain.tpl.class.php"; //include Rain TPL
@@ -53,6 +53,7 @@ require $GLOBALS['config']['CONFIG_FILE'];  // Read login/password hash into $GL
 
 // a token depending of deployment salt, user password, and the current ip
 define('STAY_SIGNED_IN_TOKEN', sha1($GLOBALS['hash'].$_SERVER["REMOTE_ADDR"].$GLOBALS['salt']));
+
 
 autoLocale(); // Sniff browser language and set date format accordingly.
 header('Content-Type: text/html; charset=utf-8'); // We use UTF-8 for proper international characters handling.

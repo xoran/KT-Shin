@@ -25,7 +25,7 @@ error_reporting(E_ALL^E_WARNING);  // See all error except warnings.
 //error_reporting(-1); // See all errors (for debugging only)
 //------------------------------------------------------------------------------------------------
 //Add on KT-Shin by Kentaro
-//$_SESSION['infoMsg'] = NULL;
+
 
 // -----------------------------------------------------------------------------------------------
 // Process login form: Check if login/password is correct.
@@ -95,7 +95,6 @@ function renderPage()
     include('inc/public_get_commands.php');
     // -----------------------------------------------------------------------
 
-
     // -------- Display login form.
     if (isset($_SERVER["QUERY_STRING"]) && startswith($_SERVER["QUERY_STRING"],'do=login'))
     {
@@ -107,6 +106,7 @@ function renderPage()
             $PAGE->assign('msg', $_SESSION['infoMsg']);
         else
             $PAGE->assign('msg', NULL);
+        $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
         $PAGE->assign('returnurl',(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER']:''));
         $PAGE->renderPage('loginform');
         unset($_SESSION['infoMsg']);
@@ -265,6 +265,7 @@ function renderPage()
             $PAGE->assign('msg', $_SESSION['infoMsg']);
         else
             $PAGE->assign('msg', NULL);
+        $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
         $PAGE->renderPage('tools');
         unset($_SESSION['infoMsg']);
         exit;
@@ -304,6 +305,7 @@ function renderPage()
                 $PAGE->assign('msg', $_SESSION['infoMsg']);
             else
                 $PAGE->assign('msg', NULL);
+            $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
             $PAGE->renderPage('changepassword');
             unset($_SESSION['infoMsg']);
             exit;
@@ -343,6 +345,7 @@ function renderPage()
             '.$timezone_form;
             $PAGE->assign('timezone_form',$timezone_html); // FIXME: put entire tz form generation in template ?
             $PAGE->assign('timezone_js',$timezone_js);
+            $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
             $PAGE->renderPage('configure');
             exit;
         }
@@ -356,6 +359,7 @@ function renderPage()
             $PAGE = new pageBuilder;
             $PAGE->assign('linkcount',count($LINKSDB));
             $PAGE->assign('token',getToken());
+            $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
             $PAGE->renderPage('changetag');
             exit;
         }
@@ -401,6 +405,7 @@ function renderPage()
     {
         $PAGE = new pageBuilder;
         $PAGE->assign('linkcount',count($LINKSDB));
+        $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
         $PAGE->renderPage('addlink');
         exit;
     }
@@ -561,6 +566,7 @@ function renderPage()
         {
             $PAGE = new pageBuilder;
             $PAGE->assign('linkcount',count($LINKSDB));
+            $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
             $PAGE->renderPage('export');
             exit;
         }
@@ -617,6 +623,7 @@ HTML;
         $PAGE->assign('linkcount',count($LINKSDB));
         $PAGE->assign('token',getToken());
         $PAGE->assign('maxfilesize',getMaxFileSize());
+        $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
         $PAGE->renderPage('import');
         exit;
     }

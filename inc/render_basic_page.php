@@ -3,6 +3,7 @@
 
     $PAGE = new pageBuilder;
     $PAGE->assign('linkcount',count($LINKSDB));
+    $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
     // added by Bronco
     $PAGE->assign('query_string',$_SERVER["QUERY_STRING"]);
     if (isset($_GET['searchtags'])){
