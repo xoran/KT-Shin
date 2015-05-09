@@ -329,7 +329,9 @@ function renderPage()
             $GLOBALS['disablejquery']=!empty($_POST['disablejquery']);
             $GLOBALS['privateLinkByDefault']=!empty($_POST['privateLinkByDefault']);
             writeConfig();
-            echo '<script language="JavaScript">alert("'.e('Configuration was saved',false).'.");document.location=\'?do=tools\';</script>';
+            //echo '<script language="JavaScript">alert("'.e('Configuration was saved',false).'.");document.location=\'?do=tools\';</script>';
+            $_SESSION['infoMsg'] = e('Configuration was saved', FALSE);
+            header('Location: ?do=tools');
             exit;
         }
         else // Show the configuration form.
@@ -345,8 +347,13 @@ function renderPage()
             '.$timezone_form;
             $PAGE->assign('timezone_form',$timezone_html); // FIXME: put entire tz form generation in template ?
             $PAGE->assign('timezone_js',$timezone_js);
+            if(isset($_SESSION['infoMsg']))
+                $PAGE->assign('msg', $_SESSION['infoMsg']);
+            else
+                $PAGE->assign('msg', NULL);
             $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
             $PAGE->renderPage('configure');
+            unset($_SESSION['infoMsg']);
             exit;
         }
     }
