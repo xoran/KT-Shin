@@ -12,6 +12,7 @@
 
 			<div class="container-fluid">
 				<div id="headerform" class="fixed-top">
+
 						<div class="filtering">
 							<div class="shaareyourlinks posinline">
 								{"Shaare your links"|e}: <span class="ftBlue">{if="!empty($linkcount)"}{$linkcount} {"links"|e}{/if}</span>
@@ -49,8 +50,7 @@
 				{$result_count} {"results for tags"|e} <i> {loop="search_crits"}
 					<span class="linktag" title="Remove tag"><a
 						href="?removetag={$value|htmlspecialchars}">{$value|htmlspecialchars}
-							<span
-							style="border-left: 1px solid #aaa; padding-left: 5px; color: #6767A7;">x</span>
+							<span class="icoRemoveTag"><i class="fa fa-times-circle-o"></i></span>
 					</a></span> {/loop}
 				</i>
 			</h1>
@@ -62,6 +62,9 @@
 		<!-- #pageheader -->
 
 		<div id="linklist">
+		{if="isset($msg)"}
+			<div id="alert" class="alert alert-danger redSpan text-center topMargin30" role="alert">{$msg|htmlspecialchars}</div>
+		{/if}
 
 			<div class="columns">
 				<ol>
@@ -79,14 +82,14 @@
 							{/if}
 
 						<div class="linkcontainer">
-							<h1 class="linktitle">
+							<p class="linktitle">
 								<a href="{$redirector}{if="
 									stripos($value.tags,'mynotebook')!==false"}?{$value.linkdate|smallHash}{else}{$value.url|htmlspecialchars}{/if}">
 									{if="$search_crits&&$search_type=='fulltext'"}
 									{$value.title|highLightSearchTerms:$search_crits} {else}
 									{$value.title|reduceTitle} {/if} </a>
 
-							</h1>
+							</p>
 							<p class="linkurl" title="Short link">{if="!stripos($value.tags,'mynotebook')!==false"}{$value.url|htmlspecialchars}{/if}</p>
 
 							{if="isLoggedIn()"}

@@ -24,5 +24,7 @@
 
     if (isset($_GET['addnote'])){$PAGE->assign('edit_link','edit_note'); }else{$PAGE->assign('edit_link','edit_link');}
     $PAGE->renderPage('linklist');
+    // Add-on KT-SHIN
+    unset($_SESSION['infoMsg']);
     exit;
 ?>

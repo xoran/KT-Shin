@@ -24,7 +24,6 @@ checkphpversion();
 error_reporting(E_ALL^E_WARNING);  // See all error except warnings.
 //error_reporting(-1); // See all errors (for debugging only)
 //------------------------------------------------------------------------------------------------
-//Add on KT-Shin by Kentaro
 
 
 // -----------------------------------------------------------------------------------------------
@@ -106,7 +105,6 @@ function renderPage()
             $PAGE->assign('msg', $_SESSION['infoMsg']);
         else
             $PAGE->assign('msg', NULL);
-        $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
         $PAGE->assign('returnurl',(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER']:''));
         $PAGE->renderPage('loginform');
         unset($_SESSION['infoMsg']);
@@ -265,7 +263,6 @@ function renderPage()
             $PAGE->assign('msg', $_SESSION['infoMsg']);
         else
             $PAGE->assign('msg', NULL);
-        $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
         $PAGE->renderPage('tools');
         unset($_SESSION['infoMsg']);
         exit;
@@ -305,7 +302,6 @@ function renderPage()
                 $PAGE->assign('msg', $_SESSION['infoMsg']);
             else
                 $PAGE->assign('msg', NULL);
-            $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
             $PAGE->renderPage('changepassword');
             unset($_SESSION['infoMsg']);
             exit;
@@ -351,7 +347,6 @@ function renderPage()
                 $PAGE->assign('msg', $_SESSION['infoMsg']);
             else
                 $PAGE->assign('msg', NULL);
-            $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
             $PAGE->renderPage('configure');
             unset($_SESSION['infoMsg']);
             exit;
@@ -366,7 +361,6 @@ function renderPage()
             $PAGE = new pageBuilder;
             $PAGE->assign('linkcount',count($LINKSDB));
             $PAGE->assign('token',getToken());
-            $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
             $PAGE->renderPage('changetag');
             exit;
         }
@@ -385,8 +379,9 @@ function renderPage()
                 $LINKSDB[$key]=$value;
             }
             $LINKSDB->savedb(); // save to disk
-            echo '<script language="JavaScript">alert("'.e('Tag was removed from ',false).count($linksToAlter).e('links',false).'");document.location=\'?\';</script>';
-            exit;
+            $_SESSION['infoMsg'] = e('Tag was removed from', FALSE).' '.count($linksToAlter).e('links',false);
+            header('Location: ?');
+             exit;
         }
 
         // Rename a tag:
@@ -402,7 +397,8 @@ function renderPage()
                 $LINKSDB[$key]=$value;
             }
             $LINKSDB->savedb(); // save to disk
-            echo '<script language="JavaScript">alert("'.e('Tag was renamed in ',false).count($linksToAlter).e('links',false).'.");document.location=\'?searchtags='.urlencode($_POST['totag']).'\';</script>';
+            $_SESSION['infoMsg'] = $_SESSION['infoMsg'] = e('Tag was renamed in ',false).count($linksToAlter).e('links',false);
+            header('Location: ?searchtags='.urlencode($_POST['totag']));
             exit;
         }
     }
@@ -412,7 +408,6 @@ function renderPage()
     {
         $PAGE = new pageBuilder;
         $PAGE->assign('linkcount',count($LINKSDB));
-        $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
         $PAGE->renderPage('addlink');
         exit;
     }
@@ -573,7 +568,6 @@ function renderPage()
         {
             $PAGE = new pageBuilder;
             $PAGE->assign('linkcount',count($LINKSDB));
-            $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
             $PAGE->renderPage('export');
             exit;
         }
@@ -629,8 +623,7 @@ HTML;
         $PAGE = new pageBuilder;
         $PAGE->assign('linkcount',count($LINKSDB));
         $PAGE->assign('token',getToken());
-        $PAGE->assign('maxfilesize',getMaxFileSize());
-        $PAGE->assign('ktshinVersion', KTSHIN_VERSION);
+        $PAGE->assign('maxfilesize',(getMaxFileSize()/1024)/1024);
         $PAGE->renderPage('import');
         exit;
     }
@@ -718,6 +711,7 @@ function buildLinkList($PAGE,$LINKSDB)
         $classLi =  $i%2!=0 ? '' : 'publicLinkHightLight';
         $link['class'] = ($link['private']==0 ? $classLi : 'private');
         $link['localdate']=linkdate2locale($link['linkdate']);
+        //$link['localdate']=$link['linkdate'];
         $taglist = explode(' ',$link['tags']);
         uasort($taglist, 'strcasecmp');
         $link['taglist']=$taglist;
@@ -758,4 +752,5 @@ if (isset($_SERVER["QUERY_STRING"]) && startswith($_SERVER["QUERY_STRING"],'do=d
 if (isset($_SERVER["QUERY_STRING"]) && startswith($_SERVER["QUERY_STRING"],'ws=')) { processWS(); exit; } // Webservices (for jQuery/jQueryUI)
 if (!isset($_SESSION['LINKS_PER_PAGE'])) $_SESSION['LINKS_PER_PAGE']=$GLOBALS['config']['LINKS_PER_PAGE'];
 renderPage();
+
 ?>

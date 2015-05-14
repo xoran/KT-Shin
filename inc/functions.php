@@ -387,6 +387,14 @@ function linkdate2locale($linkdate)
     // the date will not be displayed in the chosen locale, but probably in US notation.
 }
 
+function linkdate2locale2($linkdate)
+{
+    //return utf8_encode(strftime('%c',linkdate2timestamp($linkdate))); // %c is for automatic date format according to locale.
+    return utf8_encode(strftime("%A %d %B %Y",$linkdate));
+    // Note that if you use a local which is not installed on your webserver,
+    // the date will not be displayed in the chosen locale, but probably in US notation.
+}
+
 // Parse HTTP response headers and return an associative array.
 function http_parse_headers_shaarli( $headers )
 {
@@ -493,7 +501,12 @@ class pageBuilder
         elseif (!empty($_GET['searchterm'])) $searchcrits.='&searchterm='.urlencode($_GET['searchterm']);
         $this->tpl->assign('searchcrits',$searchcrits);
         $this->tpl->assign('source',indexUrl());
+        $this->tpl->assign('ktshinVersion', KTSHIN_VERSION);
         $this->tpl->assign('version',shaarli_version);
+        if(isset($_SESSION['infoMsg']))
+            $this->tpl->assign('msg', $_SESSION['infoMsg']);
+        else
+            $this->tpl->assign('msg', NULL);
         $this->tpl->assign('scripturl',indexUrl());
         $this->tpl->assign('pagetitle','Shaarli');
         $this->tpl->assign('privateonly',!empty($_SESSION['privateonly'])); // Show only private links ?

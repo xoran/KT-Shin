@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
  	<head>
-		{include="includes"} {$timezone_js}
+		{include="includes"}
 	</head>
 <body class="editlink" >
 <div id="pageheader">
@@ -64,7 +64,6 @@
 	</div><!-- .container-fluid -->
 </div><!-- #pageheader -->
 {include="page.footer"} {include="includesfooter"} {include="aboutmodal"}
-{if="($GLOBALS['config']['OPEN_SHAARLI'] || isLoggedIn()) && empty($GLOBALS['disablejquery'])"}
 <script language="Javascript">
 $(document).ready(function()
 {
@@ -72,7 +71,5 @@ $(document).ready(function()
 
 });
 </script>
-{/if}
-
 </body>
 </html>
