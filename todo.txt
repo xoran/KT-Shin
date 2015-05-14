@@ -1,2 +1,3 @@
-13/05/2015:
+14/05/2015: Work on tags cloud
+13/05/2015: Finalize Tools: tags, import ,export
 10/05/2015: Work on date display on linklist (aborted at the moment)
