@@ -34,7 +34,7 @@ textarea,
 .inputFile { background: none; border: none !important; }
 .lightText { color: #ACACAC; }
 .row { margin: 0; }
-.topMargin30 { margin-top: 30px; }
+.topMargin30 { margin-top: 30px !important; }
 .botMargin10 { margin-bottom: 10px; }
 .redSpan {
 	color: #FFF !important;

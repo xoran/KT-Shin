@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>{include="includes"}</head>
+<html lang="en">
+	<head>
+		{include="includes"}
+	</head>
 <body class="export">
 <div id="pageheader">
-	{include="page.header"}
-	<div id="toolsdiv">
-		<h1>{"Export"|e}</h1>
-	    <a href="?do=export&what=all"><strong>{"Export all"|e}</strong></a><br><br>
-	    <a href="?do=export&what=public"><strong>{"Export public"|e}</strong> <span>: {"Export public links only"|e}</a><br><br>
-	    <a href="?do=export&what=private"><strong>{"Export private"|e}</strong> <span>: {"Export private links only"|e}</a><br><br style="clear:both;">
-	</div>
-</div>
-{include="page.footer"}
+	{include="page.header"}<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 active-background">
+				<h3 class="ftBlue"><i class="fa fa-sign-out"></i> &nbsp;{"Export"|e}</h3>
+				<a class="topMargin30" href="?do=tools"><i class="fa fa-arrow-circle-left"></i> {"Back to tools"|e}</a>
+			    <p class="topMargin30"><a class="smallbutton" href="?do=export&what=all"><strong>{"Export all"|e}</strong></a></p>
+			    <p><a class="smallbutton" href="?do=export&what=public"><strong>{"Export public"|e}</strong> <span>: {"Export public links only"|e}</a></p>
+			    <p><a class="smallbutton" href="?do=export&what=private"><strong>{"Export private"|e}</strong> <span>: {"Export private links only"|e}</a></p>
+			</div><!-- .col-md-8 -->
+			<div class="col-md-2"></div>
+	    </div><!-- .row-->
+	</div><!-- .container-fluid -->
+</div><!-- #pageheader -->
+{include="page.footer"} {include="includesfooter"} {include="aboutmodal"}
 </body>
 </html>
