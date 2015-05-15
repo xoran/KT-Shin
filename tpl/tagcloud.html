@@ -1,31 +1,39 @@
 <!DOCTYPE html>
-<html>
-<head>{include="includes"}</head>
+<html lang="en">
+	<head>
+		{include="includes"}
+	</head>
 <body class="tagcloud">
-	<div id="pageheader">{include="page.header"}</div>
-<center>
-<div id="cloudtag">
-	{if="isLoggedIn()"}
-		<form name="deltag" method="post" action="index.php?do=deltag">
-			<input type="hidden" name="token" value="{$token}"/>
-	{/if}
+<div id="pageheader">
+	{include="page.header"}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12 active-background">
+				<h3 class="ftBlue"><i class="fa fa-cloud"></i>&nbsp;{"Tag cloud"|e}</h3>
+				<div id="cloudtag" class="botMargin30">
+					{if="isLoggedIn()"}
+						<form name="deltag" method="post" action="index.php?do=deltag">
+							<input type="hidden" name="token" value="{$token}"/>
+					{/if}
 
-	    {loop="tags"}
-	    	<a href="?searchtags={$key|htmlspecialchars}" class="{$value.class}">
-	    		{$key|htmlspecialchars} <em>{$value.count}</em>
-	    		{if="isLoggedIn()"}
-					<input type="submit" name="{$key|htmlspecialchars}" value="X" title="delete this tag"/>
-				{/if}
-	    	</a>
-	    {/loop}
+					    {loop="tags"}
+					    	<a href="?searchtags={$key|htmlspecialchars}" class="{$value.class}">
+					    		{$key|htmlspecialchars} <em>{$value.count}</em>
+					    		{if="isLoggedIn()"}
+									<input type="submit" name="{$key|htmlspecialchars}" value="X" title="delete this tag"/>
+								{/if}
+					    	</a>
+					    {/loop}
 
-   	{if="isLoggedIn()"}
-		</form>
-	{/if}
-</div>
-</center>
-{include="page.footer"}
-<script src="inc/jquery.min.js#"></script>
+				   	{if="isLoggedIn()"}
+						</form>
+					{/if}
+				</div><!-- #cloudtag -->
+			</div><!-- .col-md-12 -->
+	    </div><!-- .row-->
+	</div><!-- .container-fluid -->
+</div><!-- #pageheader -->
+{include="page.footer"}  {include="includesfooter"} {include="aboutmodal"}
 <script>
 	$('input[type=submit]').click(function(){
 		return confirm('Do you REALLY want to remove this tag ?');
