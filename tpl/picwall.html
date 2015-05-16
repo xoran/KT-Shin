@@ -4,24 +4,28 @@
 {include="includes"}
 </head>
 <body class="picwall">
-<div id="pageheader">{include="page.header"}</div>
-<div class="main">
-<div class="picwall_container">
-    {loop="linksToDisplay"}
-    <div class="picwall_pictureframe">
-	    {$value.thumbnail}<a href="{$value.permalink}"><span class="info">{$value.title|htmlspecialchars}</span></a>
-    </div>
-    {/loop}
-</div>
-</div>
-{include="page.footer"}
-{include="includesfooter"}
-{if="empty($GLOBALS['disablejquery'])"}
+<div id="pageheader">
+{include="page.header"}
+<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12 active-background">
+				<h3 class="ftBlue"><i class="fa fa-desktop"></i>&nbsp;{"picture wall"|e}</h3>
+				<div id="picmain" class="picwall_container botMargin30">
+				    {loop="linksToDisplay"}
+				    <div class="picwall_pictureframe">
+					    {$value.thumbnail}<a href="{$value.permalink}"><span class="info">{$value.title|htmlspecialchars}</span></a>
+				    </div>
+				    {/loop}
+				</div>
+			</div><!-- .col-md-12 -->
+	    </div><!-- .row-->
+	</div><!-- .container-fluid -->
+</div><!-- #pageheader -->
+{include="page.footer"} {include="includesfooter"} {include="aboutmodal"}
 <script>
 $(document).ready(function() {
     $("img.lazyimage").show().lazyload();
 });
 </script>
-{/if}
 </body>
 </html>
