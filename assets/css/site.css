@@ -8,7 +8,7 @@ body {
 }
 li.nostyle { list-style: none; }
 a { text-decoration: none !important; }
-a.qrcode { border: 1px solid #337ab7; padding: 3px !important; vertical-align: middle !important; }
+a.qrcode { border: 1px solid #337ab7; padding: 0 3px 3px 3px !important; vertical-align: middle !important; }
 a.qrcode:hover { border: 1px solid #24ab00; margin-bottom: 10px; }
 h3.ftGreen, h3.ftBlue { margin-bottom: 25px; }
 h3.norm { margin: 0 !important; }
@@ -110,6 +110,7 @@ a.smallbutton { color: #000 !important; }
 #linklist li.pin {
 	border: 1px solid #000;
     min-width: 270px !important;
+    min-height: 520px !important;
     margin: 10px;
     padding: 15px;
     float: left;
@@ -147,39 +148,17 @@ a.smallbutton { color: #000 !important; }
 	background-color: #1E1E1E;
 	border-bottom: 1px solid #444141;
 }
-.linkdescription {
-	padding: 10px 15px 10px 15px;
-	border-bottom: 1px solid #444141;
-	margin: 0;
-	color: #53FC77;
-	font-weight: normal;
-	overflow: auto;
-}
-.linkdescription a { text-decorat ion: none; color: #999; }
-.linkdescription li {
-	list-style: circle inside;
-	border: none;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-	border-top: 1px solid rgba(0, 0, 0, 0.03);
-}
-.linkdescription ul,.linkdescription ol { border: none; margin-top: 5px; margin-bottom: 5px; }
-.linkdescription p { padding: 5px 0; }
-.linkdescription em { font-style: italic; }
-.linkdescription h1 { font-size: 1.4em; font-weight: bold; }
-.linkdescription h2 { font-size: 1.3em; font-weight: bold; }
-.linkdescription h3 { font-size: 1.2em; font-weight: bold; }
-.linkdescription h4 { font-size: 1.1em; font-weight: bold; }
-.linkdescription strong { font-weight: bold }
-.linkdescription a:hover { color: #F57900; }
+
 .linkfooter { background-color: #1E1E1E;  padding-bottom: 5px; border-bottom: 1px solid #444141; }
 .linktaglist { padding-top: 10px; line-height: 200%; }
 .linktag {
 	color: #644;
 	font-size: 0.8em;
-	padding: 3px 3px 3px 20px;
+	padding: 3px 3px 3px 5px;
 	height: 15px;
 	border-radius: 3px 3px 3px 3px;
 	cursor: pointer;
+    white-space: nowrap;
 }
 /*.linktag:hover { color: #000; }*/
 .linktag a {
@@ -209,6 +188,7 @@ a.smallbutton { color: #000 !important; }
 div.thumbnailDefautl + a > img { border: 1px solid #000; }
 .permadate { margin: 5px 0; }
 .permaqr { margin-top: 5px; padding: 3px 0; }
+
 h1#searchcriteria { color: #416598; }
 
 div#permalinkQrcode {
@@ -520,4 +500,50 @@ div.dailyEntryDescription
 { display: none; }
 
 #headerform { background: #232323; box-shadow: 4px 4px 5px #000; }
+
+
+/* Css for linkdescription div */
+.linkdescription {
+    /*padding: 10px 15px 10px 15px;*/
+    border-bottom: 1px solid #444141;
+    margin: 0;
+    color: #25F522;
+    font-weight: normal;
+    overflow: auto;
+}
+.linkdescription a { text-decorat ion: none; color: #999; }
+.linkdescription li {
+    list-style: circle inside;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.03);
+}
+.linkdescription ul,.linkdescription ol { border: none; margin-top: 5px; margin-bottom: 5px; }
+.linkdescription p { padding: 5px 0; }
+.linkdescription em { font-style: italic; }
+.linkdescription h1 { font-size: 1.4em; font-weight: bold; }
+.linkdescription h2 { font-size: 1.3em; font-weight: bold; }
+.linkdescription h3 { font-size: 1.2em; font-weight: bold; }
+.linkdescription h4 { font-size: 1.1em; font-weight: bold; }
+.linkdescription strong { font-weight: bold }
+.linkdescription a:hover { color: #F57900; }
+.linkdescription {
+    width:100%;
+    /*border:1px solid #444141;*/
+}
+.linkdescription div {
+    width:100%;
+}
+.linkdescription .expand {
+    background-color: #171B1E;
+    border-top: 1px solid #444141;
+    margin-top: 5px;
+    padding: 2px 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.linkdescription .contentdesc {
+    display: none;
+    padding : 5px;
+}
 

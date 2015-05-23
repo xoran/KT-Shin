@@ -19,7 +19,11 @@
 			        </div>
 			        <div class="form-group">
 			        	<label for="lf_imgurl" class="kt-label">{"Picture's url to illustrate the link"|e}</label>
-			        	<input type="text" name="lf_imgurl" value="{$link.urlimg|htmlspecialchars}" class="form-control">
+                        {if condition="!empty($link.urlimg)"} 
+			        	    <input type="text" name="lf_imgurl" value="{$link.urlimg|htmlspecialchars}" class="form-control">
+                        {else}
+                            <input type="text" name="lf_imgurl" value="" class="form-control">
+                        {/if}
 			        </div>
 			        <div class="form-group">
 			        	<label for="lf_title" class="kt-label">{"Title"|e}</label>

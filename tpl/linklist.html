@@ -113,9 +113,14 @@
 							</div>
 							{/if} {if="$value.description"}
 							<div class="linkdescription">
-								{if="$search_crits&&$search_type=='fulltext'"}
-								{$value.description|highLightSearchTerms:$search_crits} {else}
-								{$value.description|parse} {/if}</div>
+                                 <div class="expand"><span>{"Expand"|e}</span></div>
+                                 <div class="contentdesc">
+								    {if="$search_crits&&$search_type=='fulltext'"}
+								        {$value.description|highLightSearchTerms:$search_crits}
+                                    {else}
+								        {$value.description|parse} {/if}
+                                 </div>
+                            </div>
 							{/if}
 
 							<div class="linkfooter">
@@ -130,8 +135,7 @@
 									<a href="http://invx.com/code/qrcode/?code={$scripturl|urlencode}%3F{$value.linkdate|smallHash}&width=200&height=200"
 										onclick="showQrCode(this); return false;"
 										data-permalink="{$scripturl}?{$value.linkdate|smallHash}"
-										class="qrcode"><img src="images/qrcode.png#" width="13"
-										height="13" title="QR-Code"></a>
+										class="qrcode"><img src="images/qrcode.png#" width="13" height="13" title="QR-Code"></a>
 								</div>
 								<div class="permatags">
 									{if="$value.tags"}
