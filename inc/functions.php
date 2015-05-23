@@ -2290,6 +2290,9 @@ function highLightSearchTerms($string,$searchterm){
 
 function aff($a,$stop=true){echo 'Arret dans le fichier '.__FILE__.'<pre>';var_dump($a);echo '</pre>';if ($stop){exit();}}
 
+/////////////////////////////////////////////////////////////////////////////
+// ADD BY KTDEV
+/////////////////////////////////////////////////////////////////////////////
 function reduceTitle($string)
 {
     $len = 50;
