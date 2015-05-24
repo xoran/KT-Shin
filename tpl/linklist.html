@@ -1,217 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
- 	{include="includes"}
-</head>
-<body class="{$class} {$search_type}">
-	<div class="container-fluid">
-		<div id="ajaxload"></div>
+    <head>
+        {include="includes"}
+    </head>
+    <body class="{$class} {$search_type}">
+        <div class="container-fluid">
+            <div id="ajaxload"></div>
 
-		<div id="pageheader">
-			{include="page.header"}
+            <div id="pageheader">
+                {include="page.header"}
 
-			<div class="container-fluid">
-				<div id="headerform" class="fixed-top">
+                <div class="container-fluid">
+                    <div id="headerform" class="fixed-top">
 
-						<div class="filtering">
-							<div class="shaareyourlinks posinline">
-								{"Shaare your links"|e}: <span class="ftBlue">{if="!empty($linkcount)"}{$linkcount} {"links"|e}{/if}</span>
-							</div><!-- .shaareyourlinks -->
-							<div class="forms posinline">
-								<form class="form-inline width250 posinline" method="GET" class="searchform" name="searchform">
-									<div class="form-group">
-										<input type="text" id="searchform_value" class="form-control input-sm" name="searchterm" value="" placeholder="{"Search keyword"|e}">
-									</div>
-									<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i></button>
-								</form>
-								<form class="form-inline width250 posinline" method="GET" class="tagfilter" name="tagfilter">
-									<div class="form-group">
-										<input type="text" name="searchtags" id="tagfilter_value" class="form-control input-sm" value="" placeholder="{"Filter by tag"|e}">
-									</div>
-									<button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-tag"></i></button>
-								</form>
-							</div><!-- .forms -->
-					</div><!-- .filtering -->
-				</div><!-- #headerform -->
-			</div><!-- .container-fluid -->
+                        <div class="filtering hidden-xs">
 
-			<div style="clear: both"></div>
-			<h1 class="mynotebook_only">{"My notebook"|e}</h1>
-			{if="count($links)==0"}
-			<h1 id="searchcriteria">
-				{"Nothing found"|e}.</i>
-			</h1>
-			{else} {if="$search_type=='fulltext'"}
-			<h1 id="searchcriteria">
-				{$result_count} {"results for"|e} <i>{$search_crits}</i>
-			</h1>
-			{/if} {if="$search_type=='tags'"}
-			<h1 id="searchcriteria">
-				{$result_count} {"results for tags"|e} <i> {loop="search_crits"}
-					<span class="linktag" title="Remove tag"><a
-						href="?removetag={$value|htmlspecialchars}">{$value|htmlspecialchars}
-							<span class="icoRemoveTag"><i class="fa fa-times-circle-o"></i></span>
-					</a></span> {/loop}
-				</i>
-			</h1>
-			{/if} {/if}
+                            <div class="forms posinline">
+                                <form class="form-inline width250 posinline" method="GET" class="searchform" name="searchform">
+                                    <div class="form-group">
+                                        <input type="text" id="searchform_value" class="form-control input-sm" name="searchterm" value="" placeholder="{"Search keyword"|e}">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search"></i></button>
+                                </form>
+                                <form class="form-inline width250 posinline" method="GET" class="tagfilter" name="tagfilter">
+                                    <div class="form-group">
+                                        <input type="text" name="searchtags" id="tagfilter_value" class="form-control input-sm" value="" placeholder="{"Filter by tag"|e}">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-tag"></i></button>
+                                </form>
+                            </div><!-- .forms -->
+                        </div><!-- .filtering -->
+                    </div><!-- #headerform -->
+                </div><!-- .container-fluid -->
+
+                <div style="clear: both"></div>
+                <h1 class="mynotebook_only">{"My notebook"|e}</h1>
+                {if="count($links)==0"}
+                <h1 id="searchcriteria">
+                    <i>{"Nothing found"|e}.</i>
+                </h1>
+                {else} {if="$search_type=='fulltext'"}
+                <h1 id="searchcriteria">
+                    <i>{$result_count} {"results for"|e} <i>{$search_crits}</i>
+                </h1>
+                {/if} {if="$search_type=='tags'"}
+                <h1 id="searchcriteria">
+                    {$result_count} {"results for tags"|e} <i> {loop="search_crits"}
+                        <span class="linktag" title="Remove tag"><a
+                                href="?removetag={$value|htmlspecialchars}">{$value|htmlspecialchars}
+                                <span class="icoRemoveTag"><i class="fa fa-times-circle-o"></i></span>
+                            </a></span> {/loop}
+                    </i>
+                </h1>
+                {/if} {/if}
 
 
 
-		</div>
-		<!-- #pageheader -->
+            </div>
+            <!-- #pageheader -->
 
-		<div id="linklist">
-		{if="isset($msg)"}
-			<div id="alert" class="alert alert-danger redSpan text-center topMargin30" role="alert">{$msg|htmlspecialchars}</div>
-		{/if}
+            <div id="linklist">  
+                <div class="shaareyourlinks posinline">
+                   <strong>{"Shaare your links"|e}: <span class="ftBlue">{if="!empty($linkcount)"}{$linkcount} {"links"|e}{/if}</span></strong>
+                </div><!-- .shaareyourlinks -->
+                {if="isset($msg)"}
+                <div id="alert" class="alert alert-danger redSpan text-center topMargin30" role="alert">{$msg|htmlspecialchars}</div>
+                {/if}
 
-			<div class="columns">
-				<ol>
-					{loop="links"}
-					<li class="pin pinta {if="$value.class"} {$value.class}{/if}">
+                <div class="columns">
+                    <ol>
+                        {loop="links"}
+                        <li class="pin pinta {if="$value.class"} {$value.class}{/if}">
 
-							{if="isset($value.urlimg)&&trim($value.urlimg)!=''"}
-							<div class="thumbnail">
-								{$value.urlimg|thumbnail}
-							</div>
-							{else}
-							<div class="thumbnailDefault">
-								{$value.url|thumbnail}
-							</div>
-							{/if}
+                        {if="isset($value.urlimg)&&trim($value.urlimg)!=''"}
+                        <div class="thumbnail">
+                            {$value.urlimg|thumbnail}
+                        </div>
+                        {else}
+                        <div class="thumbnailDefault">
+                            {$value.url|thumbnail}
+                        </div>
+                        {/if}
 
-						<div class="linkcontainer">
-							<p class="linktitle">
-								<a href="{$redirector}{if="
-									stripos($value.tags,'mynotebook')!==false"}?{$value.linkdate|smallHash}{else}{$value.url|htmlspecialchars}{/if}">
-									{if="$search_crits&&$search_type=='fulltext'"}
-									{$value.title|highLightSearchTerms:$search_crits} {else}
-									{$value.title|reduceTitle} {/if} </a>
+                        <div class="linkcontainer">
+                            <p class="linktitle">
+                                <a href="{$redirector}{if="
+                                stripos($value.tags,'mynotebook')!==false"}?{$value.linkdate|smallHash}{else}{$value.url|htmlspecialchars}{/if}">
+                                {if="$search_crits&&$search_type=='fulltext'"}
+                                {$value.title|highLightSearchTerms:$search_crits} {else}
+                                {$value.title|reduceTitle} {/if} </a>
 
-							</p>
-							<p class="linkurl" title="Short link">{if="!stripos($value.tags,'mynotebook')!==false"}{$value.url|htmlspecialchars}{/if}</p>
+                            </p>
+                            <p class="linkurl" title="Short link">{if="!stripos($value.tags,'mynotebook')!==false"}{$value.url|htmlspecialchars}{/if}</p>
 
-							{if="isLoggedIn()"}
-							<div class="admin">
-								<span class=""><i class="fa fa-cog"></i>&nbsp; </span>
-								<form method="GET" class="buttoneditform">
-									<!--  <img src="../images/private.png" /> --> <input type="hidden"
-										name="{if=" stripos($value.tags,'mynotebook')!==false
-										"}edit_note{else}edit_link{/if}" value="{$value.linkdate}"><input
-										type="image" alt="Edit" src="images/edit_icon.png#"
-										title="Edit" class="button_edit">
-								</form>
-								<form method="POST" class="buttoneditform">
-									<input type="hidden" name="lf_linkdate"
-										value="{$value.linkdate}"> <input type="hidden"
-										name="token" value="{$token}"> <input type="hidden"
-										name="delete_link"> <input type="image" alt="Delete"
-										src="images/delete_icon.png#" title="Delete"
-										class="button_delete" onClick="return confirmDeleteLink();">
-								</form>
-							</div>
-							{/if} {if="$value.description"}
-							<div class="linkdescription">
-                                 <div class="expand"><span>{"Expand"|e}</span></div>
-                                 <div class="contentdesc">
-								    {if="$search_crits&&$search_type=='fulltext'"}
-								        {$value.description|highLightSearchTerms:$search_crits}
-                                    {else}
-								        {$value.description|parse} {/if}
-                                 </div>
+                            {if="isLoggedIn()"}
+                            <div class="admin">
+                                <span class=""><i class="fa fa-cog"></i>&nbsp;Actions: </span>
+                                <form method="GET" class="buttoneditform">
+                                    <input type="hidden" name="{if=" stripos($value.tags,'mynotebook')!==false "}edit_note{else}edit_link{/if}" value="{$value.linkdate}">
+                                    <button type="submit" class="btn btn-primary btn-xs" title="Edit"><i class="fa fa-pencil"></i></button>
+                                </form>
+                                <form method="POST" class="buttoneditform">
+                                    <input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
+                                    <input type="hidden" name="token" value="{$token}">
+                                    <input type="hidden" name="delete_link">
+                                    <button type="button" class="btn btn-danger btn-xs" title="Delete" onClick="return confirmDeleteLink();"><i class="fa fa-minus-circle"></i></button>
+                                </form>
                             </div>
-							{/if}
+                            {/if} {if="$value.description"}
+                            <div class="linkdescription">
+                                <div class="expand"><span>{"Expand"|e}</span></div>
+                                <div class="contentdesc">
+                                    {if="$search_crits&&$search_type=='fulltext'"}
+                                    {$value.description|highLightSearchTerms:$search_crits}
+                                    {else}
+                                    {$value.description|parse} {/if}
+                                </div>
+                            </div>
+                            {/if}
 
-							<div class="linkfooter">
+                            <div class="linkfooter">
                                 <div class="permadate text-center">
-									{if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
-									<span class="linkdate" title="Permalink">{$value.localdate|htmlspecialchars}&nbsp;
-									<a href="?{$value.linkdate|smallHash}"><i class="fa fa-link"></i> permalink</a></span> {else} <span class="linkdate"
-										title="Short link here"><a
-										href="?{$value.linkdate|smallHash}"> <i class="fa fa-link"></i> permalink</a> - </span> {/if}
-								</div>
-								<div class="permaqr text-center ftblue">
-									<a href="http://invx.com/code/qrcode/?code={$scripturl|urlencode}%3F{$value.linkdate|smallHash}&width=200&height=200"
-										onclick="showQrCode(this); return false;"
-										data-permalink="{$scripturl}?{$value.linkdate|smallHash}"
-										class="qrcode"><img src="images/qrcode.png#" width="13" height="13" title="QR-Code"></a>
-								</div>
-								<div class="permatags">
-									{if="$value.tags"}
-									<div class="linktaglist">
-										{loop="value.taglist"}<span class="linktag" title="Add tag"><a
-											href="?addtag={$value|urlencode}"><i class="fa fa-tag"></i> {$value|htmlspecialchars}</a></span>
-										{/loop}
-									</div>
-								</div>
-								{/if}
-							</div>
-						</div>
-					</li> {/loop}
-				</ol>
-			</div>
-			<!-- #linklist -->
-			{include="linklist.paging"}
+                                    {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
+                                    <span class="linkdate" title="Permalink">{$value.localdate|htmlspecialchars}&nbsp;
+                                        <a href="?{$value.linkdate|smallHash}"><i class="fa fa-link"></i> permalink</a></span> {else} <span class="linkdate"
+                                        title="Short link here"><a
+                                            href="?{$value.linkdate|smallHash}"> <i class="fa fa-link"></i> permalink</a> - </span> {/if}
+                                </div>
+                                <div class="permaqr text-center ftblue">
+                                    <a href="http://invx.com/code/qrcode/?code={$scripturl|urlencode}%3F{$value.linkdate|smallHash}&width=200&height=200"
+                                        onclick="showQrCode(this); return false;"
+                                        data-permalink="{$scripturl}?{$value.linkdate|smallHash}"
+                                        class="qrcode"><img src="images/qrcode.png#" width="13" height="13" title="QR-Code"></a>
+                                </div>
+                                <div class="permatags">
+                                    {if="$value.tags"}
+                                    <div class="linktaglist">
+                                        {loop="value.taglist"}<span class="linktag" title="Add tag"><a
+                                            href="?addtag={$value|urlencode}"><i class="fa fa-tag"></i> {$value|htmlspecialchars}</a></span>
+                                        {/loop}
+                                    </div>
+                                </div>
+                                {/if}
+                            </div>
+                        </div>
+                        </li> {/loop}
+                    </ol>
+                </div>
+                <!-- #linklist -->
+                {include="linklist.paging"}
 
-		</div>
-		<input type="hidden" id="loaded_pages" val="" />
-		{include="page.footer"} {include="includesfooter"} {include="aboutmodal"}
+            </div>
+            <input type="hidden" id="loaded_pages" val="" />
+            {include="page.footer"} {include="includesfooter"} {include="aboutmodal"}
 
-		<!-- Bronco pinterest style add -->
-		{if="empty($GLOBALS['disablejquery'])"}
-		<script>
-    // Remove any displayed QR-Code
-    function remove_qrcode()
-    {
-        var elem = document.getElementById("permalinkQrcode");
-        if (elem) elem.parentNode.removeChild(elem);
-        return false;
-    }
+            <!-- Bronco pinterest style add -->
+            {if="empty($GLOBALS['disablejquery'])"}
+            <script>
+                // Remove any displayed QR-Code
+                function remove_qrcode()
+                {
+                    var elem = document.getElementById("permalinkQrcode");
+                    if (elem) elem.parentNode.removeChild(elem);
+                    return false;
+                }
 
-    // Show the QR-Code of a permalink (when the QR-Code icon is clicked).
-    function showQrCode(caller,loading)
-    {
-        // Dynamic javascript lib loading: We only load qr.js if the QR code icon is clicked:
-        if (typeof(qr)=='undefined') // Load qr.js only if not present.
-        {
-            if (!loading)  // If javascript lib is still loading, do not append script to body.
-            {
-                var element = document.createElement("script");
-                element.src = "assets/js/qr.min.js";
-                document.body.appendChild(element);
-            }
-            setTimeout(function() { showQrCode(caller,true);}, 200); // Retry in 200 milliseconds.
-            return false;
-        }
+                // Show the QR-Code of a permalink (when the QR-Code icon is clicked).
+                function showQrCode(caller,loading)
+                {
+                    // Dynamic javascript lib loading: We only load qr.js if the QR code icon is clicked:
+                    if (typeof(qr)=='undefined') // Load qr.js only if not present.
+                    {
+                        if (!loading)  // If javascript lib is still loading, do not append script to body.
+                        {
+                            var element = document.createElement("script");
+                            element.src = "assets/js/qr.min.js";
+                            document.body.appendChild(element);
+                        }
+                        setTimeout(function() { showQrCode(caller,true);}, 200); // Retry in 200 milliseconds.
+                        return false;
+                    }
 
-        // Remove previous qrcode if present.
-        remove_qrcode();
+                    // Remove previous qrcode if present.
+                    remove_qrcode();
 
-        // Build the div which contains the QR-Code:
-        var element = document.createElement('div');
-        element.id="permalinkQrcode";
-      // Make QR-Code div commit sepuku when clicked:
-        if ( element.attachEvent ){ element.attachEvent('onclick', 'this.parentNode.removeChild(this);' ); } // Damn IE
-        else { element.setAttribute('onclick', 'this.parentNode.removeChild(this);' ); }
+                    // Build the div which contains the QR-Code:
+                    var element = document.createElement('div');
+                    element.id="permalinkQrcode";
+                    // Make QR-Code div commit sepuku when clicked:
+                    if ( element.attachEvent ){ element.attachEvent('onclick', 'this.parentNode.removeChild(this);' ); } // Damn IE
+                    else { element.setAttribute('onclick', 'this.parentNode.removeChild(this);' ); }
 
-        // Build the QR-Code:
-        var image = qr.image({size: 8,value: caller.dataset.permalink});
-        if (image)
-        {
-            element.appendChild(image);
-            element.innerHTML+= "<br>{"Click to close"|e}";
-            caller.parentNode.appendChild(element);
-        }
-        else
-        {
-            element.innerHTML="Your browser does not seem to be HTML5 compatible.";
-        }
-        return false;
-    }
+                    // Build the QR-Code:
+                    var image = qr.image({size: 8,value: caller.dataset.permalink});
+                    if (image)
+                    {
+                        element.appendChild(image);
+                        element.innerHTML+= "<br>{"Click to close"|e}";
+                        caller.parentNode.appendChild(element);
+                    }
+                    else
+                    {
+                        element.innerHTML="Your browser does not seem to be HTML5 compatible.";
+                    }
+                    return false;
+                }
 
-</script>
-		{/if}
-	</div>
-</body>
+            </script>
+            {/if}
+        </div>
+    </body>
 </html>

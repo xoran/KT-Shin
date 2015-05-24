@@ -1,13 +1,16 @@
 <div class="paging">
 {if="isLoggedIn()"}
-    <div id="paging_privatelinks">
-        <a href="?privateonly">
+    <div id="paging_privatelinks"> 
 		{if="$privateonly"}
-		<img src="images/private_16x16_active.png#" width="16" height="16" title="Click to see all links" alt="Click to see all links">
+        <a class="btn btn-primary btn-sm" href="?privateonly">
+        <i class="fa fa-unlock"></i> {"See Public Links"|e}
+        </a>&nbsp;
 		{else}
-		<img src="images/private_16x16.png#" width="16" height="16" title="Click to see only private links" alt="Click to see only private links">
+        <a class="btn btn-danger btn-sm" href="?privateonly">
+        <i class="fa fa-lock"></i> {"See Private Links Only"|e}
+        </a>&nbsp;
 		{/if}
-		</a>&nbsp;
+		
 
 {/if}
 

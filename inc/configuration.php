@@ -6,7 +6,7 @@
 $GLOBALS['config']['DATADIR'] = 'data'; // Data subdirectory
 $GLOBALS['config']['CONFIG_FILE'] = $GLOBALS['config']['DATADIR'].'/config.php'; // Configuration file (user login/password)
 $GLOBALS['config']['DATASTORE'] = $GLOBALS['config']['DATADIR'].'/datastore.php'; // Data storage file.
-$GLOBALS['config']['LINKS_PER_PAGE'] = 30; // Default links per page.
+$GLOBALS['config']['LINKS_PER_PAGE'] = 50; // Default links per page.
 $GLOBALS['config']['IPBANS_FILENAME'] = $GLOBALS['config']['DATADIR'].'/ipbans.php'; // File storage for failures and bans.
 $GLOBALS['config']['BAN_AFTER'] = 4;        // Ban IP after this many failures.
 $GLOBALS['config']['BAN_DURATION'] = 1800;  // Ban duration for IP address after login failures (in seconds) (1800 sec. = 30 minutes)
@@ -28,7 +28,7 @@ if (is_file($GLOBALS['config']['DATADIR'].'/options.php')) require($GLOBALS['con
 
 
 define('shaarli_version','0.0.41 beta');
-define('KTSHIN_VERSION', '0.2.17 alpha');
+define('KTSHIN_VERSION', '0.2.20 alpha');
 define('LANG','fr');
 define('PHPPREFIX','<?php /* '); // Prefix to encapsulate data in php code.
 define('PHPSUFFIX',' */ ?>'); // Suffix to encapsulate data in php code.

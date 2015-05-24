@@ -20,11 +20,11 @@
 
         <li><a href="?">{"Home"|e} <span class="sr-only">(current)</span></a></li>
         {if="isLoggedIn()"}
+        <li><a class="addlink_link" href="?do=addlink"><i class="fa fa-plus-square"></i><strong>{"Add link"|e}</strong></a></li>
 		<li class="dropdown">
 		    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{"Admin"|e}<span class="caret"></span></a>
 		    <ul class="dropdown-menu" role="menu">
 		     <li><a href="?do=logout">{"Logout"|e}</a><a href="?do=tools">{"Tools"|e}</a></li>
-			 <li><a class="addlink_link" href="?do=addlink"><strong>{"Add link"|e}</strong></a></li>
 			 <li><a class="addnote_link" href="index.php?post=%20+&amp;addnote=true"  >{"New note"|e} </a></li>
 			</ul>
 		</li>

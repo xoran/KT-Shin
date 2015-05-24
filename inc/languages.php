@@ -39,7 +39,7 @@ $messages['fr']=array(
 	'the daily kt-shin'=>'Le Petit "Katie Shin" Quotidien',
 	'picture wall'=>"Mur d'images",
 	'links'=>' lien(s)',
-	'kt-shin theme by'=>'Mod & Thème KT-Shin par',
+	'kt-shin theme by'=>'KT-Shin as "Katie-Shin"',
 	'Features'=>'Javascript',
 	'shaare your links'=>'J\'ai découvert et partage avec vous',
 	'the personal, minimalist, super-fast, no-database delicious clone. by'=>'Le clone personnel de Delicious, minimaliste, super rapide et sans BDD par ',
@@ -117,6 +117,8 @@ $messages['fr']=array(
     'back to tools'=>'Retourner aux Outils',
     'tag was removed from'=>'L\'étiquette a été supprimée de',
     'your file'=>'Votre fichier',
+    'see private links only'=>'Liens privés',
+    'see public links'=>'Liens publiques',
     
 
 	// js messages

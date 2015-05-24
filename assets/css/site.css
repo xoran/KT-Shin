@@ -13,14 +13,10 @@ a.qrcode:hover { border: 1px solid #24ab00; margin-bottom: 10px; }
 h3.ftGreen, h3.ftBlue { margin-bottom: 25px; }
 h3.norm { margin: 0 !important; }
 p.complement { color: #9d9d9d }
-input[type="text"],
-input[type="password"],
-.ui-autocomplete-input,
-textarea,
-.uneditable-input {
+input[type="text"], input[type="password"], .ui-autocomplete-input, textarea, .uneditable-input {
  	display: inline-block;
   	padding: 4px;
-  	font-size: 13px;
+  	font-size: 16px !important;
 	color: #C5D1DB !important;
   	line-height: 18px;
   	border: 1px solid #ccc;
@@ -73,8 +69,8 @@ a.smallbutton { color: #000 !important; }
 .fixed-top { left: 0; position: fixed; right: 0; top: 50px; }
 .control-label { color: #ACACAC; }
 
-.filtering { margin: 0 15px; padding: 10px 0; overflow: auto; }
-.shaareyourlinks { float: left; color: graytext; font-style: italic; }
+.filtering { margin: 0 15px; overflow: auto; }
+.shaareyourlinks { color: graytext; font-style: italic; }
 .ftBlue { color: #0674CE; }
 .ftGreen { color: #24ab00; }
 .forms { float: right; }
@@ -106,7 +102,6 @@ a.smallbutton { color: #000 !important; }
 	-moz-column-span: all;
 	-webkit-column-span: all;
 }
-.columns {]}
 #linklist li.pin {
 	border: 1px solid #000;
     min-width: 270px !important;
@@ -546,4 +541,11 @@ div.dailyEntryDescription
     display: none;
     padding : 5px;
 }
+/* Menu */
+
+a.addlink_link{ color: #0674CE !important; }
+a.addlink_link:hover{ color: #fff !important; }
+.dropdown-menu { background: #000; }
+.dropdown-menu > li > a { color: #9D9D9D }
+.dropdown-menu > li > a:hover {  background: #000; color: #fff }
 
