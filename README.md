@@ -1,10 +1,20 @@
 # KT-Shin alias "Katie-Shin"
+---
+#1. Introduction
 Share the links you discover in a black modern interface.  
 **KT-Shin is actually in 0.2.20 alpha version**   
 
-KT-Shin is a project forked from [Shinterest](https://github.com/broncowdd/Shinterest) itself is a fork of [Shaarli](https://github.com/sebsauvage/Shaarli ) by Sebsauvage
-
-Link to Shaarli wiki: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
+KT-Shin is a project forked from [Shinterest](https://github.com/broncowdd/Shinterest) itself is a fork of [Shaarli](https://github.com/sebsauvage/Shaarli ) by Sebsauvage  
+Link to Shaarli wiki: http://sebsauvage.net/wiki/doku.php?id=php:shaarli 
+#2. Screenshots
+**Screenshot 1 - Main page: linklist**  
+![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-1.jpg "KT-Shin - Main Page :  linklist")  
+**Screenshot 2 - Identification**  
+![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-2.jpg "KT-Shin - Main Page :  linklist")  
+**Screenshot 3 - Link edition**  
+![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-3.jpg "KT-Shin - Main Page :  linklist")  
+**Screenshot 4 - Tools**  
+![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-4.jpg "KT-Shin - Main Page :  linklist")  
 
 ------------------------------------------------------------------------------
 
