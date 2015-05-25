@@ -12,16 +12,17 @@ Link to Shaarli wiki: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 **Screenshot 1 - Main page: linklist**  
 ![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-1.jpg "KT-Shin - Main Page :  linklist")  
 **Screenshot 2 - Identification**  
-![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-2.jpg "KT-Shin - Main Page :  linklist")  
+![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-2.jpg "KT-Shin - Identification")  
 **Screenshot 3 - Link edition**  
-![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-3.jpg "KT-Shin - Main Page :  linklist")  
+![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-3.jpg "KT-Shin - Link edition")  
 **Screenshot 4 - Tools**  
-![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-4.jpg "KT-Shin - Main Page :  linklist")  
+![KT-Shin - Screenshot 1](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-4.jpg "KT-Shin - Tools")  
+**Screenshot 5 - Link details** 
+![KT-Shin - Screenshot 5](http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-5.jpg "KT-Shin - Link details")  
 
 ------------------------------------------------------------------------------
 
-Like Shaarli, KT-Shin is distributed under the zlib/libpng License:
-
+Like Shaarli, KT-Shin is distributed under the zlib/libpng License:  
 Copyright (c) 2011 Sébastien SAUVAGE (sebsauvage.net)
 
 This software is provided 'as-is', without any express or implied warranty. 
