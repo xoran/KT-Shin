@@ -1,107 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Shaarli by sebsauvage</title>
+    <meta charset="UTF-8">
+    <title>Shaarli by xoran</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <section class="page-header">
+      <h1 class="project-name">Shaarli</h1>
+      <h2 class="project-tagline">The personal, minimalist, super-fast, no-database delicious clone.</h2>
+      <a href="https://github.com/xoran/KT-Shin" class="btn">View on GitHub</a>
+      <a href="https://github.com/xoran/KT-Shin/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/xoran/KT-Shin/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <header>
-          <h1>Shaarli</h1>
-          <h2>The personal, minimalist, super-fast, no-database delicious clone.</h2>
-        </header>
+    <section class="main-content">
+      <h1>
+<a id="kt-shin-alias-katie-shin" class="anchor" href="#kt-shin-alias-katie-shin" aria-hidden="true"><span class="octicon octicon-link"></span></a>KT-Shin alias "Katie-Shin"</h1>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/sebsauvage/Shaarli/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/sebsauvage/Shaarli/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/sebsauvage/Shaarli" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
+<hr>
 
-        <hr>
+<h1>
+<a id="1-introduction" class="anchor" href="#1-introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Introduction</h1>
 
-        <section id="main_content">
-          <p><img src="http://sebsauvage.net/wiki/lib/exe/fetch.php?media=php:php_shaarli:php_shaarli_logo_inkscape_w600_transp-nq8.png" alt="Shaarli logo"></p>
+<p>Share the links you discover in a black modern interface.<br>
+<strong>KT-Shin is actually in 0.2.20 alpha version</strong>   </p>
 
-<p>You want to share the links you discover ? Shaarli is a minimalist delicious clone you can install on your own website.
-It is designed to be personal (single-user), fast and handy. </p>
+<p>KT-Shin is a project forked from <a href="https://github.com/broncowdd/Shinterest">Shinterest</a> itself is a fork of <a href="https://github.com/sebsauvage/Shaarli">Shaarli</a> by Sebsauvage<br>
+Link to Shaarli wiki: <a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli">http://sebsauvage.net/wiki/doku.php?id=php:shaarli</a> </p>
 
-<p>Features:</p>
+<h1>
+<a id="2-screenshots" class="anchor" href="#2-screenshots" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Screenshots</h1>
 
-<ul>
-<li>Minimalist design (simple is beautiful)</li>
-<li>FAST</li>
-<li>Dead-simple installation: Drop the files, open the page. No database required.</li>
-<li>Easy to use: Single button in your browser to bookmark a page</li>
-<li>Save url, title, description (unlimited size). Classify links with tags (with autocomplete)</li>
-<li>Tag renaming, merging and deletion.</li>
-<li>Automatic thumbnails for various services (imgur, imageshack.us, flickr, youtube, vimeo, dailymotion…)</li>
-<li>Automatic conversion of URLs to clickable links in descriptions. Support for http/ftp/file/apt protocols.</li>
-<li>Save links as public or private</li>
-<li>1-clic access to your private links/notes</li>
-<li>Browse links by page, filter by tag or use the full text search engine</li>
-<li>Permalinks (with QR-Code) for easy reference</li>
-<li>Tag cloud</li>
-<li>Picture wall (which can be filtered by tag or text search)</li>
-<li>“Links of the day” Newspaper-like digest, browsable by day.</li>
-<li>“Daily” RSS feed: Get each day a digest of all new links.</li>
-<li>RSS and ATOM feeds (which can be filtered by tag or text search)</li>
-<li>PubSubHubbub protocol support</li>
-<li>Easy backup (Data stored in a single file)</li>
-<li>Compact storage (1315 links stored in 150 kb)</li>
-<li>Mobile browsers support</li>
-<li>Can import/export Netscape bookmarks (for import/export from/to Firefox, Opera, Chrome, Delicious…)</li>
-<li>Automatic ban of IP address upon too many failed logins</li>
-<li>Protected against XSRF, session cookie hijacking.</li>
-<li>Automatic removal of annoying FeedBurner/Google FeedProxy parameters in URL (?utm_source…)</li>
-<li>Shaarli is a bookmarking application, but you can use it for micro-blogging (like Twitter), a pastebin, an online notepad, a snippet repository, etc.</li>
-<li>You will be automatically notified by a discreet popup if a new version is available</li>
-<li>Pages are easy to customize (using simple RainTPL templates)</li>
-</ul><p>Requires php 5.1 (php 5.2 required for autocomplete.)</p>
+<p><strong>Screenshot 1 - Main page: linklist</strong><br>
+<img src="http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-1.jpg" alt="KT-Shin - Screenshot 1" title="KT-Shin - Main Page :  linklist"><br>
+<strong>Screenshot 2 - Identification</strong><br>
+<img src="http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-2.jpg" alt="KT-Shin - Screenshot 1" title="KT-Shin - Main Page :  linklist"><br>
+<strong>Screenshot 3 - Link edition</strong><br>
+<img src="http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-3.jpg" alt="KT-Shin - Screenshot 1" title="KT-Shin - Main Page :  linklist"><br>
+<strong>Screenshot 4 - Tools</strong><br>
+<img src="http://ktdev.info/software/kt-shin/screenshots/KT-Shin-screenshot-4.jpg" alt="KT-Shin - Screenshot 1" title="KT-Shin - Main Page :  linklist">  </p>
 
-<p>More information on the project page:
-<a href="http://sebsauvage.net/wiki/doku.php?id=php:shaarli">http://sebsauvage.net/wiki/doku.php?id=php:shaarli</a></p>
+<hr>
 
-<hr><p>Shaarli is distributed under the zlib/libpng License:</p>
+<p>Like Shaarli, KT-Shin is distributed under the zlib/libpng License:</p>
 
 <p>Copyright (c) 2011 Sébastien SAUVAGE (sebsauvage.net)</p>
 
-<p>This software is provided 'as-is', without any express or implied warranty.
-In no event will the authors be held liable for any damages arising from
-the use of this software.</p>
+<p>This software is provided 'as-is', without any express or implied warranty. 
+In no event will the authors be held liable for any damages arising from the use of this software.</p>
 
-<p>Permission is granted to anyone to use this software for any purpose,
-including commercial applications, and to alter it and redistribute it 
-freely, subject to the following restrictions:</p>
+<p>Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and 
+redistribute it freely, subject to the following restrictions:</p>
 
-<ol>
-<li><p>The origin of this software must not be misrepresented; you must not 
- claim that you wrote the original software. If you use this software
- in a product, an acknowledgment in the product documentation would
- be appreciated but is not required.</p></li>
-<li><p>Altered source versions must be plainly marked as such, and must
- not be misrepresented as being the original software.</p></li>
-<li><p>This notice may not be removed or altered from any source distribution.</p></li>
-</ol><hr>
-        </section>
+<p>The origin of this software must not be misrepresented; you must not claim that you wrote the original software. 
+If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.</p>
 
-        <footer>
-          Shaarli is maintained by <a href="https://github.com/sebsauvage">sebsauvage</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
+<p>Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.
+This notice may not be removed or altered from any source distribution.</p>
 
-        
-      </div>
-    </div>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/xoran/KT-Shin">Shaarli</a> is maintained by <a href="https://github.com/xoran">xoran</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
   </body>
 </html>
+
