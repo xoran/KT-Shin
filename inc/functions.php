@@ -984,7 +984,7 @@ function showDaily()
     $LINKSDB=new linkdb(isLoggedIn() || $GLOBALS['config']['OPEN_SHAARLI']);  // Read links from database (and filter private links if used it not logged in).
 
 
-    $day=Date('Ymd',strtotime('-1 day')); // Yesterday, in format YYYYMMDD.
+    $day=Date('Ymd',strtotime('day')); //Original '-1 day' Yesterday, in format YYYYMMDD. // MOD KTDEV 'day' Start the actual day
     if (isset($_GET['day'])) $day=$_GET['day'];
 
     $days = $LINKSDB->days();

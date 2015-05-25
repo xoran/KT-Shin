@@ -366,23 +366,23 @@ input[type=image] { vertical-align: middle; }
     transform: scale(1.4,1.4);
 }
 
-.tagcloud #cloudtag .size0{ font-size:8px; }
-.tagcloud #cloudtag .size1{ font-size:8px; }
-.tagcloud #cloudtag .size2{font-size:10px;}
-.tagcloud #cloudtag .size3{font-size:12px;}
-.tagcloud #cloudtag .size4{font-size:14px;}
-.tagcloud #cloudtag .size5{font-size:16px;}
-.tagcloud #cloudtag .size6{font-size:18px;}
-.tagcloud #cloudtag .size7{font-size:20px;}
-.tagcloud #cloudtag .size8{font-size:22px;}
-.tagcloud #cloudtag .size9{font-size:24px;}
-.tagcloud #cloudtag .size10{font-size:26px;}
-.tagcloud #cloudtag .size11{font-size:28px;}
-.tagcloud #cloudtag .size12{font-size:30px;}
-.tagcloud #cloudtag .size13{font-size:32px;}
-.tagcloud #cloudtag .size14{font-size:34px;}
-.tagcloud #cloudtag .size15{font-size:36px;}
-.tagcloud #cloudtag .size16{font-size:38px;}
+.tagcloud #cloudtag .size0{ font-size:8px !important; }
+.tagcloud #cloudtag .size1{ font-size:12px !important; }
+.tagcloud #cloudtag .size2{ font-size:14px !important; }
+.tagcloud #cloudtag .size3{ font-size:18px !important; }
+.tagcloud #cloudtag .size4{ font-size:22px !important; }
+.tagcloud #cloudtag .size5{ font-size:26px !important; }
+.tagcloud #cloudtag .size6{ font-size:30px !important; }
+.tagcloud #cloudtag .size7{ font-size:34px !important; }
+.tagcloud #cloudtag .size8{ font-size:38px !important; }
+.tagcloud #cloudtag .size9{ font-size:42px !important; }
+.tagcloud #cloudtag .size10{ font-size:46px !important; }
+.tagcloud #cloudtag .size11{ font-size:50px !important; }
+.tagcloud #cloudtag .size12{ font-size:54px !important; }
+.tagcloud #cloudtag .size13{ font-size:58px !important; }
+.tagcloud #cloudtag .size14{ font-size:62px !important; }
+.tagcloud #cloudtag .size15{ font-size:66px !important; }
+.tagcloud #cloudtag .size16{ font-size:70px !important; }
 
 /* --- Picture wall CSS --- */
 #picwall_container { color:#fff; clear:both; }
