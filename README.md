@@ -1,4 +1,6 @@
-# KT-Shin alias "Katie-Shin"
+# KT-Shin alias "Katie-Shin"  
+**** Discover [KT-Shin Github Page](https://xoran.github.io/KT-Shin/) ****  
+
 ---
 #1. Introduction
 Share the links you discover in a black modern interface.  
