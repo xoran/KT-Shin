@@ -1,5 +1,5 @@
 # KT-Shin alias "Katie-Shin"  
-**** Discover [KT-Shin Github Page](https://xoran.github.io/KT-Shin/) ****  
+**Discover [KT-Shin Github Page](https://xoran.github.io/KT-Shin/)**
 
 ---
 #1. Introduction
