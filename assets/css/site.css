@@ -549,3 +549,7 @@ a.addlink_link:hover{ color: #fff !important; }
 .dropdown-menu > li > a { color: #9D9D9D }
 .dropdown-menu > li > a:hover {  background: #000; color: #fff }
 
+/* Modal */ 
+
+.modal-content { background-image: linear-gradient(to bottom, #3A3A3A 0px, #171717 100%) !important; color: #F0F0F0; }
+.modAbout { font-size: 0.9em; }

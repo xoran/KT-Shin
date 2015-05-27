@@ -3,8 +3,8 @@
 
 ---
 #1. Introduction
-Share the links you discover in a black modern interface.  
-**KT-Shin is actually in 0.2.20 alpha version**   
+Share the links you discover in a black modern responsive interface.  
+**KT-Shin is actually in 0.2.21 alpha version**   
 
 KT-Shin is a project forked from [Shinterest](https://github.com/broncowdd/Shinterest) itself is a fork of [Shaarli](https://github.com/sebsauvage/Shaarli ) by Sebsauvage  
 Link to Shaarli wiki: http://sebsauvage.net/wiki/doku.php?id=php:shaarli 
