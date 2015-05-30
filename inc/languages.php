@@ -25,7 +25,7 @@ $messages['fr']=array(
     'Admin'=>'Admin',
     'Flux'=>'Flux',
 	'add link'=>'Ajouter un lien',
-	'new note'=>'Ajouter note',
+	'new note'=>'Ajouter une note',
 	'tag cloud'=>'Nuage de tags',
     'tag'=>'Etiquette',
     'search tag'=>'Rechercher une étiquette',
@@ -135,7 +135,7 @@ $messages['fr']=array(
 	'click to close'=>'Cliquer pour fermer',
     'delete'=>'Supprimer',
     'expand'=>'Lire le commentaire',
-    'collapse'=>'Fermer mon commentaire',
+    'collapse'=>'Fermer',
 
 
 	'<li>Shaarli is an app from Sebsauvage</li><ul>Shinterest is a Shaarli fork with some changes:   <li>Pinterest like</li>    <li>make & manage notes, todolist with the notebook system</li>    <li>use markdown in descriptions</li>    <li>use infinite scroll instead of pagination</li>    <li>delete tags form the tag cloud (admin)</li>    <li>translate shinterest adding your own transaltions in languages.php  (french/english for now)</li>    <li>add an image as a link illustration</li>    </ul>    <p>This version of Shaarli is clearly not for old computers an browsers.</p>'=>"<li>Shaarli est une application de Sebsauvage</li><li>Shinterest est un fork de Shaarli proposant certaines modifications:   <li>apparence de Pinterest</li>    <li>gérez vos notes, todolist grâce à un système de bloc-notes</li>    <li>utilisez le markdown pour modifier la typo des descriptions</li>    <li>explorez les liens en défilant simplement vers le bas grâce à un infinite scroll</li>    <li>supprimez vos tags depuis le nuage de tags (mode admin)</li>    <li>traduisez shinterest en ajoutant vos traductions dans la page languages.php  (français/anglais pour le moment)</li>    <li>ajoutez une image pour illustrer les liens (utile pour pouvoir poster un site proposant une image tout en ayant cette image visible dans Shaarli)</li>    </li>    <p>Cette version de Shaarli est clairement incompatible avec des machines ou des navigateurs anciens.</p>",

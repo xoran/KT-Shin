@@ -27,7 +27,7 @@ $(".expand").click(function () {
         //change text of header based on visibility of content div
         $header.text(function () {
             //change text based on condition
-            return $content.is(":visible") ? "Fermer" : "Lire mon commentaire";
+            return $content.is(":visible") ? "Fermer" : "Lire le commentaire";
         });
     });
 

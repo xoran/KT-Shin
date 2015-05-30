@@ -17,35 +17,35 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-
+        {if="isLoggedIn()"}<li><a href="?do=logout" class="logout" title="{"logout"|e}"><i class="fa fa-sign-out"></i></a></li>{/if}
         <li><a href="?">{"Home"|e} <span class="sr-only">(current)</span></a></li>
         {if="isLoggedIn()"}
-        <li><a class="addlink_link" href="?do=addlink"><i class="fa fa-plus-square"></i><strong>{"Add link"|e}</strong></a></li>
+        <li><a class="addlink_link" href="?do=addlink"><i class="fa fa-plus-square"></i> <strong>{"Add link"|e}</strong></a></li>
 		<li class="dropdown">
 		    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{"Admin"|e}<span class="caret"></span></a>
 		    <ul class="dropdown-menu" role="menu">
-		     <li><a href="?do=logout">{"Logout"|e}</a><a href="?do=tools">{"Tools"|e}</a></li>
-			 <li><a class="addnote_link" href="index.php?post=%20+&amp;addnote=true"  >{"New note"|e} </a></li>
+		     <li><a href="?do=tools"><i class="fa fa-wrench"></i> {"Tools"|e}</a></li>
+			 <li><a class="addnote_link" href="index.php?post=%20+&amp;addnote=true"  ><i class="fa fa-plus-square"></i> <strong>{"New note"|e}</strong></a></li>
 			</ul>
 		</li>
-		{elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
+        {elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
 			<li><a href="?do=tools">{"Tools"|e}</a><a href="?do=addlink"><strong>{"Add link"|e}</strong></a></li>
 		{else}
 			<li><a href="?do=login">{"Login"|e}</a></li>
 		{/if}
 		<li class="dropdown">
-		    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{"Flux"|e}<span class="caret"></span></a>
+		    <a href="#" class="dropdown-toggle flux" data-toggle="dropdown" role="button" aria-expanded="false">{"Flux"|e}<span class="caret"></span></a>
 		    <ul class="dropdown-menu" role="menu">
 				<li><a class="rssfeed_link" href="{$feedurl}?do=rss{$searchcrits}" class="nomobile">{"RSS Feed"|e}</a></li>
 				<li><a class="atomfeed_link" href="{$feedurl}?do=atom{$searchcrits}" class="nomobile">{"ATOM Feed"|e}</a></li>
 			</ul>
 		</li>
-			<li><a class="tagcloud_link" href="?do=tagcloud">{"Tag cloud"|e}</a></li>
-			<li><a class="picwall_link" href="?do=picwall{$searchcrits}">{"Picture wall"|e}</a></li>
-			<li><a class="daily_link" href="?do=daily">{"Daily"|e}</a></li>
-			<li><a class="notebook_link" href="?searchtags=mynotebook">{"Notebook"|e}</a></li>
-			<li><a class="about_link" title="{"About"|e}" data-target="#aboutModal" data-toggle="modal">?</a></li>
-		{/if}
+		<li><a class="tagcloud_link" href="?do=tagcloud">{"Tag cloud"|e}</a></li>
+		<li><a class="picwall_link" href="?do=picwall{$searchcrits}">{"Picture wall"|e}</a></li>
+		<li><a class="daily_link" href="?do=daily">{"Daily"|e}</a></li>
+		<li><a class="notebook_link" href="?searchtags=mynotebook">{"Notebook"|e}</a></li>
+		<li><a class="about_link" title="{"About"|e}" data-target="#aboutModal" data-toggle="modal">?</a></li>
+        {/if}
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

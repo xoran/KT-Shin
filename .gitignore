@@ -3,8 +3,3 @@ data
 tmp
 cache
 pagecache
-
-# Eclipse project files
-.settings
-.buildpath
-.project

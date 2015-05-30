@@ -28,7 +28,7 @@ if (is_file($GLOBALS['config']['DATADIR'].'/options.php')) require($GLOBALS['con
 
 
 define('shaarli_version','0.0.41 beta');
-define('KTSHIN_VERSION', '0.2.21 alpha');
+define('KTSHIN_VERSION', '0.2.22 beta');
 define('LANG','fr');
 define('PHPPREFIX','<?php /* '); // Prefix to encapsulate data in php code.
 define('PHPSUFFIX',' */ ?>'); // Suffix to encapsulate data in php code.
